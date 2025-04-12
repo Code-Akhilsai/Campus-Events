@@ -1,0 +1,192 @@
+.signuppage {
+  background: linear-gradient(to right, blue, rgb(177, 130, 238));
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.signupdialog {
+  height: 390px;
+  width: 80%;
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.logindialog {
+  height: 301px;
+  width: 80%;
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.title {
+  font-family: sans-serif;
+  color: white;
+  font-weight: 600;
+  font-size: x-large;
+}
+
+.inputs {
+  height: 35px;
+  width: 80%;
+  border-radius: 9px;
+  margin-top: 12px;
+}
+
+.inputs:focus {
+  outline: none;
+  border: 1px solid blue;
+  box-shadow: 0 0 5px blue;
+}
+.inputs2 {
+  height: 39px;
+  width: 82%;
+  border-radius: 9px;
+  margin-top: 12px;
+}
+
+.inputs2:focus {
+  outline: none;
+  border: 1px solid blue;
+  box-shadow: 0 0 5px blue;
+}
+.signupbtn {
+  background: linear-gradient(to right, blue, rgb(177, 130, 238));
+  color: white;
+  width: 80%;
+  height: 35px;
+  font-size: medium;
+  border: none;
+  border-radius: 9px;
+  font-family: sans-serif;
+  margin-top: 18px;
+}
+
+.orSeparator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%; /* Ensures the separator spans the full width */
+  margin: 15px 0;
+  font-family: sans-serif;
+  font-size: 14px;
+  color: gray;
+}
+
+.orSeparator .line {
+  flex: 1; /* Makes the lines stretch to fill available space */
+  height: 1px;
+  background-color: rgb(155, 152, 152); /* Line color */
+  border: none; /* Removes default border of <hr> */
+  margin: 0 10px; /* Adds spacing between the line and the "or" text */
+}
+
+.orSeparator span {
+  background-color: white; /* Matches the dialog background */
+  padding: 0 10px; /* Adds padding around the "or" text */
+}
+
+.googleSignupBtn {
+  width: 80%;
+  height: 35px;
+  background: linear-gradient(to right, blue, rgb(177, 130, 238));
+  color: white;
+  border-radius: 9px;
+  border: 1px solid rgb(106, 106, 231);
+  font-size: medium;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 500;
+  margin-top: 1px;
+}
+
+.text {
+  font-family: sans-serif;
+  font-size: small;
+  color: rgb(63, 62, 62);
+  margin-top: 16px;
+}
+
+.text a {
+  text-decoration: none;
+  background: linear-gradient(to right, blue, rgb(120, 62, 195));
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.passwordContainer {
+  position: relative;
+  width: 80%;
+}
+
+.passwordContainer input {
+  width: 80%;
+  padding-right: 40px;
+  margin-left: -1%;
+}
+
+.togglePasswordBtn {
+  position: absolute;
+  right: 2px;
+  top: 63%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: blue;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+@media (min-width: 1024px) {
+  .title {
+    margin-top: -4%;
+    font-size: xx-large;
+  }
+  .signupdialog {
+    height: 410px;
+    width: 26%;
+  }
+
+  .logindialog {
+    height: 320px;
+    width: 26%;
+  }
+
+  .inputs {
+    height: 41px;
+    margin-top: 14px;
+  }
+
+  .inputs2 {
+    height: 42px;
+  }
+
+  .signupbtn {
+    height: 42px;
+  }
+
+  .googleSignupBtn {
+    height: 42px;
+  }
+
+  .passwordContainer input {
+    width: 81%;
+    padding-right: 63px;
+  }
+
+  .togglePasswordBtn {
+    right: 5px;
+    font-size: 14px;
+  }
+}
