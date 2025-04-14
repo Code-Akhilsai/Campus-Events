@@ -7,12 +7,20 @@ import {
 } from "firebase/auth"; // Import Firebase Auth functions
 import { auth } from "../firebaseConfig"; // Import Firebase Auth instance
 import { useNavigate } from "react-router-dom"; // For navigation
+import useStore from "../Store/store";
 
 const Login = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [showPassword, setShowPassword] = useState(false);
-  const [error, setError] = useState("");
+  const {
+    email,
+    setEmail,
+    password,
+    setPassword,
+    showPassword,
+    setShowPassword,
+    error,
+    setError,
+  } = useStore();
+
   const [loading, setLoading] = useState(false); // Loading state
   const navigate = useNavigate(); // For navigation
 
