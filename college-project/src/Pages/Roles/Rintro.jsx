@@ -1,17 +1,7 @@
 import Image1 from "../../assets/img1.jpeg";
 import "animate.css";
-import { useNavigate } from "react-router-dom";
-const Intro = () => {
-  const nav = useNavigate();
-
-  function signup_page() {
-    nav("/signup");
-  }
-
-  function login_page() {
-    nav("/login");
-  }
-
+import "../Homestyle.css";
+const Rintro = () => {
   return (
     <>
       <section className="intro_cont">
@@ -28,7 +18,6 @@ const Intro = () => {
                 Discover Campus Events
               </p>
             </h1>
-
             <div className="para">
               <p className="animate__animated animate__fadeInLeft">
                 {" "}
@@ -40,12 +29,10 @@ const Intro = () => {
         </div>
 
         <div className="intro_btns">
-          <button className="signup_btn" onClick={signup_page}>
-            Signup
-          </button>
-          <button className="login_btn" onClick={login_page}>
-            Login
-          </button>
+          <a href="#event_container">
+            {" "}
+            <button className="signup_btn">Explore</button>
+          </a>
         </div>
       </section>
       <br />
@@ -55,4 +42,4 @@ const Intro = () => {
   );
 };
 
-export default Intro;
+export default Rintro;

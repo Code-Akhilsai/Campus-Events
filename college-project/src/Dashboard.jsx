@@ -3,6 +3,8 @@ import { auth, db } from "./firebaseConfig";
 import { doc, getDoc } from "firebase/firestore";
 import { onAuthStateChanged } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
+import AdminUI from "./Pages/Roles/AdminUI";
+import GeneralUserUI from "./Pages/Roles/GeneralUserUI";
 
 const Dashboard = () => {
   const [role, setRole] = useState(null);
@@ -83,36 +85,12 @@ const Dashboard = () => {
   }
 
   return (
-    <div style={{ textAlign: "center", marginTop: "50px" }}>
-      <h1>Welcome to the Dashboard</h1>
-      <p>Your role is: {role}</p>
-      {role === "admin" ? <AdminUI /> : <GeneralUserUI />}
-      <button onClick={handleLogout} style={{ marginTop: "20px" }}>
-        Logout
-      </button>
-    </div>
-  );
-};
-
-const AdminUI = () => {
-  return (
     <div>
-      <h2>Admin Panel</h2>
-      <p>
-        This is the Admin UI where you can manage users and perform admin tasks.
-      </p>
-    </div>
-  );
-};
-
-const GeneralUserUI = () => {
-  return (
-    <div>
-      <h2>General User Dashboard</h2>
-      <p>
-        This is the General User UI where you can view your profile and other
-        features.
-      </p>
+      {role === "admin" ? (
+        <AdminUI handleLogout={handleLogout} userRole={role} />
+      ) : (
+        <GeneralUserUI handleLogout={handleLogout} />
+      )}
     </div>
   );
 };

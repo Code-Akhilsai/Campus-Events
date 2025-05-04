@@ -37,7 +37,9 @@ const Events = () => {
   return (
     <>
       {" "}
-      <p className="eventcont_title">Events</p>
+      <p className="eventcont_title" id="event_container">
+        Events
+      </p>
       <section className="event_container">
         <br />
         {event_data.map((data, index) => {

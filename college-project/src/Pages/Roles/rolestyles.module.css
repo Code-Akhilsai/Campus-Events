@@ -1,0 +1,13 @@
+#pro_img {
+  border-radius: 55%;
+  width: 39px;
+  height: 39px;
+  margin-right: 25px;
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  #pro_img {
+    display: initial;
+  }
+}

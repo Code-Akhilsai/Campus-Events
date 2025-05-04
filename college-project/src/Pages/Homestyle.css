@@ -53,6 +53,7 @@ body {
   font-family: sans-serif;
   margin-top: 6%;
   font-size: 6.5vw;
+  line-height: 5vh;
 }
 
 .intro_btns {
@@ -345,6 +346,66 @@ body {
 ::-webkit-scrollbar-corner {
   background: #f1f1f1;
 }
+.drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 250px;
+  height: 100%;
+  background-color: white;
+  box-shadow: -2px 0px 8px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  animation: slideIn 0.3s ease forwards;
+}
+
+.drawer_header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.drawer_header p {
+  font-size: 24px;
+  font-weight: bold;
+  color: black;
+  font-family: sans-serif;
+
+  background: linear-gradient(to bottom, blue, rgb(177, 130, 238));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+}
+
+.drawer_links {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  font-family: sans-serif;
+}
+
+.drawer_links a,
+.drawer_links button {
+  font-size: 18px;
+
+  background: none;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0%);
+  }
+}
 
 @media (min-width: 1024px) {
   .menu_cont {
@@ -420,6 +481,7 @@ body {
     font-family: sans-serif;
     margin-top: -3%;
     font-size: 2vw;
+    line-height: 6.4vh;
   }
 
   .intro_btns {
