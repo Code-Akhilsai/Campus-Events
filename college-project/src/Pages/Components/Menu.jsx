@@ -30,7 +30,7 @@ const Menu = () => {
           <a>Home</a>
           <a>Events</a>
           <a>Upcoming</a>
-          <a>Organizations</a>
+          <a>Gallery</a>
         </nav>
         <div className="btns">
           <button onClick={signup_page}>Signup</button>
@@ -50,7 +50,7 @@ const Menu = () => {
             <a onClick={() => setIsDrawerOpen(false)}>Home</a>
             <a onClick={() => setIsDrawerOpen(false)}>Events</a>
             <a onClick={() => setIsDrawerOpen(false)}>Upcoming</a>
-            <a onClick={() => setIsDrawerOpen(false)}>Organizations</a>
+            <a onClick={() => setIsDrawerOpen(false)}>Gallery</a>
           </nav>
         </div>
       )}

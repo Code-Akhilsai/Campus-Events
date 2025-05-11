@@ -1,11 +1,14 @@
 import Image1 from "../../assets/img1.jpeg";
+import Image2 from "../../assets/img2.jpg";
+import Image3 from "../../assets/carrer.jpg";
+import Image4 from "../../assets/music.jpg";
 import { MdOutlineCalendarMonth } from "react-icons/md";
 import { IoTimeOutline } from "react-icons/io5";
 import { IoLocationOutline } from "react-icons/io5";
-const Events = () => {
+const Events = ({ userRole }) => {
   const event_data = [
     {
-      Image: Image1,
+      Image: Image4,
       Title: "Spring Music Festival",
       Descripton:
         "Annual music festival featuring student bands and performers.",
@@ -15,7 +18,7 @@ const Events = () => {
     },
 
     {
-      Image: Image1,
+      Image: Image3,
       Title: "Career Fair",
       Descripton:
         "Connect with employers from various industries for internships and job opportunities.",
@@ -25,10 +28,10 @@ const Events = () => {
     },
 
     {
-      Image: Image1,
-      Title: "Career Fair",
+      Image: Image2,
+      Title: "Dance Show",
       Descripton:
-        "Connect with employers from various industries for internships and job opportunities.",
+        "A vibrant dance show celebrating rhythm, energy and artistic expression.",
       Date: "Fri, Mar 28",
       Time: "10:00 AM",
       Venue: "Student Union Ballroom",
@@ -64,6 +67,9 @@ const Events = () => {
                   <p>{Venue}</p>
                 </div>
                 <button className="eventv_btn">View Details</button>
+                {userRole === "admin" && (
+                  <button className="edit_btn">Edit</button>
+                )}
               </div>
             </div>
           );

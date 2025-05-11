@@ -13,9 +13,9 @@ const AdminUI = ({ handleLogout, userRole }) => {
       <Rintro />
       <br />
       <br />
-      <Featured />
+      <Featured userRole={userRole} />
       <br />
-      <Events />
+      <Events userRole={userRole} />
       <br />
       <br />
       <br />

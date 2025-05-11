@@ -23,7 +23,7 @@ const Rmenu = ({ handleLogoutt, userRole }) => {
           <a>Home</a>
           <a>Events</a>
           <a>Upcoming</a>
-          <a>Organizations</a>
+          <a>Gallery</a>
 
           {userRole === "admin" && (
             <a href="/upload" onClick={() => setIsDrawerOpen(false)}>
@@ -55,10 +55,14 @@ const Rmenu = ({ handleLogoutt, userRole }) => {
             <a onClick={() => setIsDrawerOpen(false)}>Home</a>
             <a onClick={() => setIsDrawerOpen(false)}>Events</a>
             <a onClick={() => setIsDrawerOpen(false)}>Upcoming</a>
-            <a onClick={() => setIsDrawerOpen(false)}>Organizations</a>
+            <a onClick={() => setIsDrawerOpen(false)}>Gallery</a>
             {/* Conditionally Render Upload Option for Admin Users */}
             {userRole === "admin" && (
-              <a href="/upload" onClick={() => setIsDrawerOpen(false)}>
+              <a
+                href="/upload"
+                onClick={() => setIsDrawerOpen(false)}
+                style={{ textDecoration: "none", color: "black" }}
+              >
                 Upload
               </a>
             )}

@@ -1,11 +1,11 @@
-import Image1 from "../../assets/img1.jpeg";
+import Image1 from "../../assets/annual.jpg";
 import { IoMdSearch } from "react-icons/io";
 import { MdOutlineCalendarMonth } from "react-icons/md";
 import { IoTimeOutline } from "react-icons/io5";
 import { IoLocationOutline } from "react-icons/io5";
 import { MdPeopleOutline } from "react-icons/md";
 
-const Featured = () => {
+const Featured = ({ userRole }) => {
   return (
     <section className="featured_container">
       <p className="featured_title">Featured Event</p>
@@ -32,7 +32,7 @@ const Featured = () => {
           <div className="icons">
             <div className="icon_text">
               <MdOutlineCalendarMonth size={22} />
-              <p>Sunday, April 20, 2025</p>
+              <p>Sunday, April 12, 2025</p>
             </div>
             <div className="icon_text">
               <IoTimeOutline size={23} />
@@ -51,6 +51,8 @@ const Featured = () => {
             <button className="fregister_btn">Register Now</button>
 
             <button className="viewbtn">View Details</button>
+
+            {userRole === "admin" && <button className="viewbtn">Edit</button>}
           </div>
         </div>
       </div>
