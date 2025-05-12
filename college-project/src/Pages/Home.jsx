@@ -6,7 +6,7 @@ import "./Homestyle.css";
 import Featured from "./Components/Featured";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
-import { auth } from "../firebaseConfig"; // Import Firebase Auth instance
+import { auth } from "../firebaseConfig";
 
 function Home() {
   const navigate = useNavigate();
@@ -14,7 +14,7 @@ function Home() {
   useEffect(() => {
     const user = auth.currentUser;
     if (user) {
-      navigate("/dashboard", { replace: true }); // Redirect logged-in users to the dashboard
+      navigate("/dashboard", { replace: true });
     }
   }, [navigate]);
   return (
