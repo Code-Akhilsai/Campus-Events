@@ -1,4 +1,3 @@
-import React from "react";
 import Home from "./Pages/Home";
 import { Routes, Route } from "react-router-dom";
 import Signup from "./Auth/Signup";
