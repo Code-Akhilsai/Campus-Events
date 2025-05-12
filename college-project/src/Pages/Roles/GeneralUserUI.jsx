@@ -1,4 +1,3 @@
-import React from "react";
 import Rmenu from "./Rmenu";
 import Rintro from "./Rintro";
 import Events from "../Components/Events";
