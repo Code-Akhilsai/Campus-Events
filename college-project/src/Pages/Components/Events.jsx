@@ -1,4 +1,3 @@
-import Image1 from "../../assets/img1.jpeg";
 import Image2 from "../../assets/img2.jpg";
 import Image3 from "../../assets/carrer.jpg";
 import Image4 from "../../assets/music.jpg";
