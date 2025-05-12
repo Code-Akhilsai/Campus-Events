@@ -332,15 +332,15 @@ body {
   justify-content: center;
   background: linear-gradient(to right, blue, rgb(177, 130, 238));
   flex-direction: column;
-}
 
-.footer_cont div {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  color: white;
-  font-family: sans-serif;
-  font-size: 15px;
+  & div {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: white;
+    font-family: sans-serif;
+    font-size: 15px;
+  }
 }
 
 ::-webkit-scrollbar {
