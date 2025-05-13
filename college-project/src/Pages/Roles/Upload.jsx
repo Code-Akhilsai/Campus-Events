@@ -1,7 +1,7 @@
 const Upload = () => {
   return (
     <>
-      <h1>Upload</h1>
+      <h1>Upload page</h1>
     </>
   );
 };
