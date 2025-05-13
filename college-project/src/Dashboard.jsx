@@ -72,7 +72,7 @@ const Dashboard = () => {
       <div style={{ textAlign: "center", marginTop: "50px" }}>
         <p>Loading...</p>
       </div>
-    ); // Show loading message while fetching data
+    );
   }
 
   if (!role) {
@@ -81,7 +81,7 @@ const Dashboard = () => {
         <p>No role found. Please contact support.</p>
         <button onClick={handleLogout}>Logout</button>
       </div>
-    ); // Handle case where no role is found
+    );
   }
 
   return (
