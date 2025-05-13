@@ -6,7 +6,7 @@ import image from "../../assets/img1.jpeg";
 import { useState } from "react";
 
 const Rmenu = ({ handleLogoutt, userRole }) => {
-  const [showDialog, setShowDialog] = useState(false); // State to toggle dialog visibility
+  const [showDialog, setShowDialog] = useState(false);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const toggleDialog = () => {
     setShowDialog((prev) => !prev); // Toggle the dialog visibility
@@ -36,7 +36,7 @@ const Rmenu = ({ handleLogoutt, userRole }) => {
         <img
           src={image}
           id={styles.pro_img}
-          onClick={toggleDialog} // Toggle dialog on click
+          onClick={toggleDialog}
           alt="Profile"
         />
 
