@@ -1,4 +1,3 @@
-import Rmenu from "./Rmenu";
 import Rintro from "./Rintro";
 import Events from "../Components/Events";
 import Footer from "../Components/Footer";
