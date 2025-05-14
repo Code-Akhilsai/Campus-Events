@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Routes, Route, useLocation } from "react-router-dom"; // Import useLocation
+import { Routes, Route, useLocation } from "react-router-dom";
 import Home from "./Pages/Home";
 import Signup from "./Auth/Signup";
 import Login from "./Auth/Login";
@@ -13,9 +13,9 @@ import { doc, getDoc } from "firebase/firestore"; // Firestore functions
 import { db } from "./firebaseConfig"; // Firestore instance
 
 function App() {
-  const [user, setUser] = useState(null); // Track logged-in user
-  const [userRole, setUserRole] = useState("guest"); // Track user role
-  const [loading, setLoading] = useState(true); // Track loading state
+  const [user, setUser] = useState(null);
+  const [userRole, setUserRole] = useState("guest");
+  const [loading, setLoading] = useState(true);
   const location = useLocation(); // Get the current route
 
   useEffect(() => {
@@ -30,26 +30,26 @@ function App() {
           const adminSnapshot = await getDoc(adminDoc);
 
           if (adminSnapshot.exists()) {
-            setUserRole(adminSnapshot.data().role); // Set role from Admin collection
+            setUserRole(adminSnapshot.data().role);
           } else {
             const generalUserDoc = doc(db, "General User", currentUser.uid);
             const generalUserSnapshot = await getDoc(generalUserDoc);
 
             if (generalUserSnapshot.exists()) {
-              setUserRole(generalUserSnapshot.data().role); // Set role from General User collection
+              setUserRole(generalUserSnapshot.data().role);
             } else {
-              setUserRole("guest"); // Default to guest if no role is found
+              setUserRole("guest");
             }
           }
         } catch (error) {
           console.error("Error fetching user role:", error);
-          setUserRole("guest"); // Default to guest on error
+          setUserRole("guest");
         }
       } else {
         setUser(null);
         setUserRole("guest");
       }
-      setLoading(false); // Stop loading after fetching user data
+      setLoading(false);
     });
 
     return () => unsubscribe(); // Cleanup listener
@@ -62,10 +62,9 @@ function App() {
   };
 
   if (loading) {
-    return <h1>Loading...</h1>; // Show a loading screen while fetching user data
+    return <h1>Loading...</h1>;
   }
 
-  // Hide menu bar on specific routes
   const hideMenuBar =
     location.pathname === "/signup" || location.pathname === "/login";
 
