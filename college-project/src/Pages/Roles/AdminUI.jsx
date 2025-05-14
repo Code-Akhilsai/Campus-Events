@@ -5,10 +5,9 @@ import Footer from "../Components/Footer";
 
 import Featured from "../Components/Featured";
 
-const AdminUI = ({ handleLogout, userRole }) => {
+const AdminUI = ({ userRole }) => {
   return (
     <>
-      <Rmenu handleLogoutt={handleLogout} userRole={userRole} />
       <Rintro />
       <br />
       <br />

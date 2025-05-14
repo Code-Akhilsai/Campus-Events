@@ -19,7 +19,6 @@ function Home() {
   }, [navigate]);
   return (
     <>
-      <Menu />
       <Intro />
       <br />
       <br />

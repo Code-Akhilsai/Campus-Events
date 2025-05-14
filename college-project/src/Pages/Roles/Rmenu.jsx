@@ -24,12 +24,6 @@ const Rmenu = ({ handleLogoutt, userRole }) => {
           <a>Events</a>
           <a>Upcoming</a>
           <a>Gallery</a>
-
-          {userRole === "admin" && (
-            <a href="/upload" onClick={() => setIsDrawerOpen(false)}>
-              Upload
-            </a>
-          )}
         </nav>
 
         {/* Profile Picture */}
@@ -41,7 +35,9 @@ const Rmenu = ({ handleLogoutt, userRole }) => {
         />
 
         {/* Dialog/Menu */}
-        {showDialog && <Pro_dialog handleLogoutt={handleLogoutt} />}
+        {showDialog && (
+          <Pro_dialog handleLogoutt={handleLogoutt} userRole={userRole} />
+        )}
         <IoMenu className="menu_icon" size={24} onClick={toggleDrawer} />
       </div>
       {/* Side Drawer */}
@@ -73,7 +69,7 @@ const Rmenu = ({ handleLogoutt, userRole }) => {
   );
 };
 
-const Pro_dialog = ({ handleLogoutt }) => {
+const Pro_dialog = ({ handleLogoutt, userRole }) => {
   return (
     <div
       style={{
@@ -111,6 +107,20 @@ const Pro_dialog = ({ handleLogoutt }) => {
       >
         Notifications
       </p>
+
+      {userRole === "admin" && (
+        <p
+          style={{
+            margin: "0",
+            padding: "7px 0",
+            cursor: "pointer",
+            fontSize: "17px",
+            fontFamily: "sans-serif",
+          }}
+        >
+          Upload
+        </p>
+      )}
       <p
         style={{
           margin: "0",

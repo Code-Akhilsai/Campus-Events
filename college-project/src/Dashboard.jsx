@@ -87,7 +87,7 @@ const Dashboard = () => {
   return (
     <div>
       {role === "admin" ? (
-        <AdminUI handleLogout={handleLogout} userRole={role} />
+        <AdminUI userRole={role} />
       ) : (
         <GeneralUserUI handleLogout={handleLogout} />
       )}

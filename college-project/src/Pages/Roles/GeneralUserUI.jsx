@@ -7,7 +7,6 @@ import Featured from "../Components/Featured";
 const GeneralUserUI = ({ handleLogout }) => {
   return (
     <>
-      <Rmenu handleLogoutt={handleLogout} />
       <Rintro />
       <br />
       <br />
