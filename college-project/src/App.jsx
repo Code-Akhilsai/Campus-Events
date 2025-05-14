@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
+import { Routes, Route, useLocation } from "react-router-dom"; // Import useLocation
 import Home from "./Pages/Home";
-import { Routes, Route } from "react-router-dom";
 import Signup from "./Auth/Signup";
 import Login from "./Auth/Login";
 import Dashboard from "./Dashboard";
@@ -16,6 +16,7 @@ function App() {
   const [user, setUser] = useState(null); // Track logged-in user
   const [userRole, setUserRole] = useState("guest"); // Track user role
   const [loading, setLoading] = useState(true); // Track loading state
+  const location = useLocation(); // Get the current route
 
   useEffect(() => {
     // Check user authentication status
@@ -25,26 +26,18 @@ function App() {
 
         // Fetch user role from Firestore
         try {
-          // Check in the "Admin" collection
           const adminDoc = doc(db, "Admin", currentUser.uid);
           const adminSnapshot = await getDoc(adminDoc);
 
           if (adminSnapshot.exists()) {
             setUserRole(adminSnapshot.data().role); // Set role from Admin collection
-            console.log("User role from Admin:", adminSnapshot.data().role);
           } else {
-            // If not found in "Admin", check in "General User"
             const generalUserDoc = doc(db, "General User", currentUser.uid);
             const generalUserSnapshot = await getDoc(generalUserDoc);
 
             if (generalUserSnapshot.exists()) {
               setUserRole(generalUserSnapshot.data().role); // Set role from General User collection
-              console.log(
-                "User role from General User:",
-                generalUserSnapshot.data().role
-              );
             } else {
-              console.log("No such user document in Admin or General User!");
               setUserRole("guest"); // Default to guest if no role is found
             }
           }
@@ -72,14 +65,19 @@ function App() {
     return <h1>Loading...</h1>; // Show a loading screen while fetching user data
   }
 
+  // Hide menu bar on specific routes
+  const hideMenuBar =
+    location.pathname === "/signup" || location.pathname === "/login";
+
   return (
     <>
       {/* Conditionally Render Menu or Rmenu */}
-      {user ? (
-        <Rmenu handleLogoutt={handleLogout} userRole={userRole} />
-      ) : (
-        <Menu />
-      )}
+      {!hideMenuBar &&
+        (user ? (
+          <Rmenu handleLogoutt={handleLogout} userRole={userRole} />
+        ) : (
+          <Menu />
+        ))}
 
       <Routes>
         <Route path="/" element={<Home />} />
