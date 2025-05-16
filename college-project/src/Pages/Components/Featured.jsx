@@ -52,13 +52,6 @@ const Featured = ({ userRole }) => {
       <p className="featured_title">Featured Event</p>
       <p className="subtitle">Don't miss out on this special event</p>
 
-      <input
-        type="text"
-        placeholder="Search events.."
-        className="featured_input"
-      />
-      <IoMdSearch className="search_icon" size={19} />
-
       <div className="featured_cont2">
         <img src={Image1} />
         <div className="featured_cont3">
