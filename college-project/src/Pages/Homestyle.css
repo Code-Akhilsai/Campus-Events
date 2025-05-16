@@ -162,12 +162,11 @@ body {
   font-family: sans-serif;
   font-weight: 600;
   font-size: 7vw;
-  margin-top: 6%;
 }
 .fevent_des {
   font-family: sans-serif;
   font-size: 4.6vw;
-  margin-top: -3%;
+  margin-top: 5px;
   line-height: 22px;
   color: gray;
 }
@@ -417,6 +416,74 @@ body {
   cursor: pointer;
 }
 
+.editInput {
+  font-size: 0.95em;
+  padding: 2px 6px;
+  border-radius: 4px;
+  border: 1px solid #bbb;
+  min-width: 0;
+  max-width: 180px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.smallBtn {
+  padding: 2px 8px;
+  font-size: 0.85em;
+  margin-left: 2px;
+  border-radius: 4px;
+  border: 1px solid #bbb;
+  background: #f5f5f5;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.smallBtn:hover {
+  background: #e0e0e0;
+}
+
+.edit_icon {
+  cursor: pointer;
+  color: #666;
+  margin-top: 2px;
+  margin-right: 3px;
+  color: blue;
+}
+
+.edit_input,
+.edit_textarea {
+  padding: 6px;
+  margin: 4px 0;
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.edit_textarea {
+  height: 80px;
+  width: 90%;
+}
+
+.save_btn,
+.cancel_btn {
+  margin-left: 6px;
+  padding: 4px 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.save_btn {
+  background-color: #4caf50;
+  color: white;
+  margin-left: -1%;
+}
+
+.cancel_btn {
+  background-color: #f44336;
+  color: white;
+  margin-left: 1%;
+}
+
 @keyframes slideIn {
   from {
     transform: translateX(100%);
@@ -551,10 +618,14 @@ body {
   }
   .fevent_des {
     font-size: 1.2vw;
-    margin-top: -2%;
+
     padding-left: 2%;
-    padding-bottom: 12%;
+
     line-height: 32px;
+
+    flex: 1;
+
+    white-space: pre-line;
   }
 
   .featured_input {
@@ -568,13 +639,11 @@ body {
   }
 
   .featured_cont3 {
-    margin-top: -6%;
     text-align: left;
-    width: 70%;
+    height: 100%;
   }
 
   .icons {
-    margin-top: -12%;
     margin-left: 14px;
   }
   .icon_text {
@@ -588,7 +657,7 @@ body {
   .fregister_btn {
     width: 20%;
     height: 41px;
-    margin-top: 18px;
+    margin-top: 4%;
   }
 
   .viewbtn {
@@ -640,5 +709,61 @@ body {
     color: white;
     font-family: sans-serif;
     font-size: 17px;
+  }
+
+  .field_row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .description_row {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 10px;
+  }
+  .edit_icon {
+    cursor: pointer;
+    color: #666;
+    margin-top: 2px;
+    margin-right: 3px;
+    color: blue;
+  }
+
+  .edit_input,
+  .edit_textarea {
+    padding: 6px;
+    margin: 4px 0;
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+  }
+
+  .edit_textarea {
+    height: 80px;
+    width: 600px;
+    margin-left: 4%;
+  }
+
+  .save_btn,
+  .cancel_btn {
+    margin-left: 6px;
+    padding: 4px 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  .save_btn {
+    background-color: #4caf50;
+    color: white;
+    margin-left: -1%;
+  }
+
+  .cancel_btn {
+    background-color: #f44336;
+    color: white;
+    margin-left: -1%;
   }
 }
