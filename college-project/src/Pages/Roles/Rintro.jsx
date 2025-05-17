@@ -5,7 +5,7 @@ const Rintro = () => {
   return (
     <>
       <section className="intro_cont">
-        <p className="intro_title">Discover EventForge</p>
+        <p className="intro_title">Discover Campus Events</p>
         <div className="intro_cont2">
           <img
             src={Image1}

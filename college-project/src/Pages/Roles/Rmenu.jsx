@@ -18,7 +18,7 @@ const Rmenu = ({ handleLogoutt, userRole }) => {
   return (
     <>
       <div className="menu_cont">
-        <p className="title">CampusVibe</p>
+        <p className="title">Campus Events</p>
         <nav className="links">
           <a>Home</a>
           <a>Events</a>

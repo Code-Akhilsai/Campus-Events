@@ -15,7 +15,7 @@ const Intro = () => {
   return (
     <>
       <section className="intro_cont">
-        <p className="intro_title">Discover CampusVibe</p>
+        <p className="intro_title">Discover Campus Events</p>
         <div className="intro_cont2">
           <img
             src={Image1}
@@ -25,7 +25,7 @@ const Intro = () => {
           <div className="intro_cont3">
             <h1 className="intro_title2">
               <p className="animate__animated animate__fadeInLeft">
-                Discover CampusVibe
+                Discover Campus Events
               </p>
             </h1>
 
