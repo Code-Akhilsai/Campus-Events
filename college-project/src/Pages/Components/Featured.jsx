@@ -1,6 +1,5 @@
 import { useState } from "react";
 import Image1 from "../../assets/annual.jpg";
-import { IoMdSearch } from "react-icons/io";
 import { MdOutlineCalendarMonth } from "react-icons/md";
 import { IoTimeOutline, IoLocationOutline } from "react-icons/io5";
 import { MdPeopleOutline, MdEdit } from "react-icons/md";
