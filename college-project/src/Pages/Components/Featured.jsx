@@ -36,7 +36,7 @@ const Featured = ({ userRole }) => {
         alert("No field selected for editing!");
         return;
       }
-      const eventId = "main"; // replace with your actual doc ID
+      const eventId = "main";
       const docRef = doc(db, "featuredEvents", eventId);
       await updateDoc(docRef, { [editField]: tempValue });
       setEventData((prev) => ({ ...prev, [editField]: tempValue }));
