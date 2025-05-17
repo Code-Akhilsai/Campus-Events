@@ -25,7 +25,7 @@ const Menu = () => {
   return (
     <>
       <div className="menu_cont">
-        <p className="title">Campus Events</p>
+        <p className="title">CampusVibe</p>
         <nav className="links">
           <a>Home</a>
           <a href="/eventpage">Events</a>
