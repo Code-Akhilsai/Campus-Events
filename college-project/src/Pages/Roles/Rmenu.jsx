@@ -4,6 +4,7 @@ import { IoMenu } from "react-icons/io5";
 import { IoClose } from "react-icons/io5";
 import image from "../../assets/img1.jpeg";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Rmenu = ({ handleLogoutt, userRole }) => {
   const [showDialog, setShowDialog] = useState(false);
@@ -70,6 +71,10 @@ const Rmenu = ({ handleLogoutt, userRole }) => {
 };
 
 const Pro_dialog = ({ handleLogoutt, userRole }) => {
+  const navigate = useNavigate();
+  const uploadpage = () => {
+    navigate("/upload");
+  };
   return (
     <div
       style={{
@@ -117,6 +122,7 @@ const Pro_dialog = ({ handleLogoutt, userRole }) => {
             fontSize: "17px",
             fontFamily: "sans-serif",
           }}
+          onClick={uploadpage}
         >
           Upload
         </p>
