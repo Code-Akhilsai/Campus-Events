@@ -225,6 +225,8 @@ body {
   font-size: 9vw;
   font-weight: 600;
   font-family: sans-serif;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .event_cont {
@@ -765,5 +767,43 @@ body {
     background-color: #f44336;
     color: white;
     margin-left: -1%;
+  }
+
+  .edit_input {
+    padding: 6px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 90%;
+    margin-bottom: 5px;
+    text-align: center;
+  }
+
+  .edit_textarea {
+    padding: 6px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 90%;
+    height: 80px;
+    margin-bottom: 10px;
+    resize: vertical;
+  }
+
+  .button_group {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+  }
+
+  .edit_icon {
+    cursor: pointer;
+    margin-left: 8px;
+    color: #666;
+    color: blue;
+  }
+
+  .edit_row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
 }
