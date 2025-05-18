@@ -1,7 +1,6 @@
 import Rintro from "./Rintro";
 import Events from "../Components/Events";
 import Footer from "../Components/Footer";
-
 import Featured from "../Components/Featured";
 
 const AdminUI = ({ userRole }) => {
