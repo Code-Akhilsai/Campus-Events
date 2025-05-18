@@ -4,7 +4,7 @@ import { IoMenu } from "react-icons/io5";
 import { IoClose } from "react-icons/io5";
 import image from "../../assets/img1.jpeg";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, NavLink } from "react-router-dom";
 
 const Rmenu = ({ handleLogoutt, userRole }) => {
   const [showDialog, setShowDialog] = useState(false);
@@ -21,10 +21,18 @@ const Rmenu = ({ handleLogoutt, userRole }) => {
       <div className="menu_cont">
         <p className="title">Campus Events</p>
         <nav className="links">
-          <a href="/">Home</a>
-          <a href="/eventpage">Events</a>
-          <a>Upcoming</a>
-          <a>Gallery</a>
+          <NavLink to="/" className="nav-link">
+            Home
+          </NavLink>
+          <NavLink to="/eventpage" className="nav-link">
+            Events
+          </NavLink>
+          <NavLink to="/upcoming" className="nav-link">
+            Upcoming
+          </NavLink>
+          <NavLink to="/gallery" className="nav-link">
+            Gallery
+          </NavLink>
         </nav>
 
         {/* Profile Picture */}

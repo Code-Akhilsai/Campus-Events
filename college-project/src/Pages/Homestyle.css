@@ -507,11 +507,20 @@ body {
     display: none;
   }
 
-  .links a {
+  .links .nav-link {
     padding: 20px;
     display: initial;
+    text-decoration: none;
     color: white;
     font-family: sans-serif;
+  }
+
+  .links .nav-link.active {
+    text-decoration: underline;
+    text-underline-offset: 6px;
+    text-decoration-thickness: 3px;
+    text-decoration-color: white;
+    color: white;
   }
 
   .btns {
