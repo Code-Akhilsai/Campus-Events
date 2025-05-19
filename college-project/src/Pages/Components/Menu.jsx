@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { href, useNavigate } from "react-router-dom";
+import { useNavigate, NavLink } from "react-router-dom";
 import "../Homestyle.css";
 import { IoMenu } from "react-icons/io5";
 import { IoClose } from "react-icons/io5";
@@ -27,11 +27,20 @@ const Menu = () => {
       <div className="menu_cont">
         <p className="title">Campus Events</p>
         <nav className="links">
-          <a href="/">Home</a>
-          <a href="/eventpage">Events</a>
-          <a>Upcoming</a>
-          <a>Gallery</a>
+          <NavLink to="/" className="nav-link">
+            Home
+          </NavLink>
+          <NavLink to="/eventpage" className="nav-link">
+            Events
+          </NavLink>
+          <NavLink to="/upcoming" className="nav-link">
+            Upcoming
+          </NavLink>
+          <NavLink to="/gallery" className="nav-link">
+            Gallery
+          </NavLink>
         </nav>
+
         <div className="btns">
           <button onClick={signup_page}>Signup</button>
           <button onClick={login_page}>Login</button>

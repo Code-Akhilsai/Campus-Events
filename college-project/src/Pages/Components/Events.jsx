@@ -1,11 +1,9 @@
 import { useState, useEffect } from "react";
 import { MdOutlineCalendarMonth, MdEdit } from "react-icons/md";
 import { IoTimeOutline, IoLocationOutline } from "react-icons/io5";
-import Image2 from "../../assets/img2.jpg";
-import Image3 from "../../assets/carrer.jpg";
-import Image4 from "../../assets/music.jpg";
 import { doc, getDoc, updateDoc } from "firebase/firestore";
 import { db } from "../../firebaseConfig";
+import { useNavigate } from "react-router-dom";
 
 const EVENTS_DOC_ID = "Eventdata";
 
@@ -13,6 +11,7 @@ const Events = ({ userRole }) => {
   const [eventData, setEventData] = useState([]);
   const [editingIndex, setEditingIndex] = useState(null);
   const [tempData, setTempData] = useState({});
+  const nav = useNavigate();
 
   // Fetch events from Firestore on mount
   useEffect(() => {
@@ -22,70 +21,12 @@ const Events = ({ userRole }) => {
       if (docSnap.exists()) {
         const firestoreEvents = docSnap.data().events;
         if (firestoreEvents && firestoreEvents.length > 0) {
-          setEventData(firestoreEvents);
+          setEventData(firestoreEvents.slice(0, 3)); // Only show first 3 events
         } else {
-          // Firestore doc exists but no events, show static cards
-          setEventData([
-            {
-              Image: Image4,
-              Title: "Spring Music Festival",
-              Description:
-                "Annual music festival featuring student bands and performers.",
-              Date: "Tue, Apr 15",
-              Time: "6:00 PM",
-              Venue: "Main Quad",
-            },
-            {
-              Image: Image3,
-              Title: "Career Fair",
-              Description:
-                "Connect with employers from various industries for internships and job opportunities.",
-              Date: "Fri, Mar 28",
-              Time: "10:00 AM",
-              Venue: "Student Union Ballroom",
-            },
-            {
-              Image: Image2,
-              Title: "Dance Show",
-              Description:
-                "A vibrant dance show celebrating rhythm, energy and artistic expression.",
-              Date: "Fri, Mar 28",
-              Time: "10:00 AM",
-              Venue: "Student Union Ballroom",
-            },
-          ]);
+          setEventData([]);
         }
       } else {
-        // Firestore doc does not exist, show static cards
-        setEventData([
-          {
-            Image: Image4,
-            Title: "Spring Music Festival",
-            Description:
-              "Annual music festival featuring student bands and performers.",
-            Date: "Tue, Apr 15",
-            Time: "6:00 PM",
-            Venue: "Main Quad",
-          },
-          {
-            Image: Image3,
-            Title: "Career Fair",
-            Description:
-              "Connect with employers from various industries for internships and job opportunities.",
-            Date: "Fri, Mar 28",
-            Time: "10:00 AM",
-            Venue: "Student Union Ballroom",
-          },
-          {
-            Image: Image2,
-            Title: "Dance Show",
-            Description:
-              "A vibrant dance show celebrating rhythm, energy and artistic expression.",
-            Date: "Fri, Mar 28",
-            Time: "10:00 AM",
-            Venue: "Student Union Ballroom",
-          },
-        ]);
+        setEventData([]);
       }
     };
     fetchEvents();
@@ -106,9 +47,14 @@ const Events = ({ userRole }) => {
       updatedEvents[editingIndex] = { ...tempData };
       setEventData(updatedEvents);
 
-      // Update Firestore
+      // Update Firestore (update the full events array, not just the first 3)
       const docRef = doc(db, "Events", EVENTS_DOC_ID);
-      await updateDoc(docRef, { events: updatedEvents });
+      const docSnap = await getDoc(docRef);
+      if (docSnap.exists()) {
+        const allEvents = docSnap.data().events;
+        allEvents[editingIndex] = { ...tempData };
+        await updateDoc(docRef, { events: allEvents });
+      }
 
       setEditingIndex(null);
     } catch (error) {
@@ -133,7 +79,7 @@ const Events = ({ userRole }) => {
           const isEditing = editingIndex === index;
           return (
             <div key={index} className="event_cont">
-              <img src={data.Image} />
+              <img src={data.Image} alt={data.Title} />
               {isEditing ? (
                 <>
                   <input
@@ -218,7 +164,9 @@ const Events = ({ userRole }) => {
           );
         })}
       </section>
-      <button className="eventv_btn2">View All Events</button>
+      <button className="eventv_btn2" onClick={() => nav("/eventpage")}>
+        View All Events
+      </button>
       <br />
       <br />
     </>

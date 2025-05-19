@@ -77,16 +77,16 @@ function App() {
         ) : (
           <Menu />
         ))}
-
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/upload" element={<Upload />} />
-        <Route path="/eventpage" element={<Eventpage />} />
+        <Route path="/eventpage" element={<Eventpage userRole={userRole} />} />
         <Route path="*" element={<h1>404 Not Found</h1>} />
       </Routes>
+      {console.log("user:", user, "hideMenuBar:", hideMenuBar)}
     </>
   );
 }
