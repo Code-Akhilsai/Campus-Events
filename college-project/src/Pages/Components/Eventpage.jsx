@@ -1,7 +1,8 @@
+import styles from "./eventstyles.module.css";
 const Eventpage = () => {
   return (
     <>
-      <h1>Events</h1>
+      <h1 className={styles.title}>Events</h1>
     </>
   );
 };

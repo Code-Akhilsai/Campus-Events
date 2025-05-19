@@ -57,10 +57,18 @@ const Rmenu = ({ handleLogoutt, userRole }) => {
             <IoClose size={24} onClick={toggleDrawer} />
           </div>
           <nav className="drawer_links">
-            <a onClick={() => setIsDrawerOpen(false)}>Home</a>
-            <a onClick={() => setIsDrawerOpen(false)}>Events</a>
-            <a onClick={() => setIsDrawerOpen(false)}>Upcoming</a>
-            <a onClick={() => setIsDrawerOpen(false)}>Gallery</a>
+            <a onClick={() => setIsDrawerOpen(false)} href="/">
+              Home
+            </a>
+            <a onClick={() => setIsDrawerOpen(false)} href="/eventpage">
+              Events
+            </a>
+            <a onClick={() => setIsDrawerOpen(false)} href="/upcoming">
+              Upcoming
+            </a>
+            <a onClick={() => setIsDrawerOpen(false)} href="/gallery">
+              Gallery
+            </a>
             {/* Conditionally Render Upload Option for Admin Users */}
             {userRole === "admin" && (
               <a

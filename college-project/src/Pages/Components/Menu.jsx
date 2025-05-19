@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { href, useNavigate } from "react-router-dom";
 import "../Homestyle.css";
 import { IoMenu } from "react-icons/io5";
 import { IoClose } from "react-icons/io5";
@@ -47,10 +47,18 @@ const Menu = () => {
             <IoClose size={24} onClick={toggleDrawer} />
           </div>
           <nav className="drawer_links">
-            <a onClick={() => setIsDrawerOpen(false)}>Home</a>
-            <a onClick={() => setIsDrawerOpen(false)}>Events</a>
-            <a onClick={() => setIsDrawerOpen(false)}>Upcoming</a>
-            <a onClick={() => setIsDrawerOpen(false)}>Gallery</a>
+            <a onClick={() => setIsDrawerOpen(false)} href="/">
+              Home
+            </a>
+            <a onClick={() => setIsDrawerOpen(false)} href="/eventpage">
+              Events
+            </a>
+            <a onClick={() => setIsDrawerOpen(false)} href="/upcoming">
+              Upcoming
+            </a>
+            <a onClick={() => setIsDrawerOpen(false)} href="/gallery">
+              Gallery
+            </a>
           </nav>
         </div>
       )}

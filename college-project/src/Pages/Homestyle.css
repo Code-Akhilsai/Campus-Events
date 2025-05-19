@@ -411,11 +411,12 @@ body {
 .drawer_links a,
 .drawer_links button {
   font-size: 18px;
-
+  text-decoration: none;
   background: none;
   border: none;
   text-align: left;
   cursor: pointer;
+  color: black;
 }
 
 .editInput {
