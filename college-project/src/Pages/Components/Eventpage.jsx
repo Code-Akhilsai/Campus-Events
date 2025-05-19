@@ -1,8 +1,13 @@
 import styles from "./eventstyles.module.css";
+import Image2 from "../../assets/img2.jpg";
+import Image3 from "../../assets/carrer.jpg";
+import Image4 from "../../assets/music.jpg";
+import { MdOutlineCalendarMonth } from "react-icons/md";
+import { IoTimeOutline, IoLocationOutline } from "react-icons/io5";
 const Eventpage = () => {
   const events = [
     {
-      Image: "https://via.placeholder.com/150",
+      Image: Image4,
       Title: "Spring Music Festival",
       Description:
         "Annual music festival featuring student bands and performers.",
@@ -11,7 +16,7 @@ const Eventpage = () => {
       Venue: "Main Quad",
     },
     {
-      Image: "https://via.placeholder.com/150",
+      Image: Image3,
       Title: "Career Fair",
       Description:
         "Connect with employers from various industries for internships and job opportunities.",
@@ -20,7 +25,7 @@ const Eventpage = () => {
       Venue: "Student Union Ballroom",
     },
     {
-      Image: "https://via.placeholder.com/150",
+      Image: Image2,
       Title: "Dance Show",
       Description:
         "A vibrant dance show celebrating rhythm, energy and artistic expression.",
@@ -35,17 +40,22 @@ const Eventpage = () => {
 
       {events.map((event, index) => (
         <div key={index} className={styles.eventCard}>
-          <img
-            src={event.Image}
-            alt={event.Title}
-            className={styles.eventImage}
-          />
+          <img src={event.Image} alt={event.Title} />
           <h2 className={styles.eventTitle}>{event.Title}</h2>
           <p className={styles.eventDescription}>{event.Description}</p>
-          <p className={styles.eventDate}>Date: {event.Date}</p>
-          <p className={styles.eventTime}>Time: {event.Time}</p>
-          <p className={styles.eventVenue}>Venue: {event.Venue}</p>
-          <button>View Details</button>
+          <div className={styles.icon_text}>
+            <MdOutlineCalendarMonth size={22} />
+            <p>{event.Date}</p>
+          </div>
+          <div className={styles.icon_text}>
+            <IoTimeOutline size={23} />
+            <p>{event.Time}</p>
+          </div>
+          <div className={styles.icon_text}>
+            <IoLocationOutline size={23} />
+            <p>{event.Venue}</p>
+          </div>
+          <button className={styles.eventBtn}>View Details</button>
         </div>
       ))}
     </>
