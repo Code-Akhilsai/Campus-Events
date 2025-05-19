@@ -221,13 +221,6 @@ body {
   font-family: sans-serif;
   text-align: center;
 }
-.event_title {
-  font-size: 9vw;
-  font-weight: 600;
-  font-family: sans-serif;
-  margin-left: auto;
-  margin-right: auto;
-}
 
 .event_cont {
   display: flex;
@@ -259,6 +252,8 @@ body {
   font-weight: 600;
   font-size: 7vw;
   margin-top: 6%;
+  margin-left: auto;
+  margin-right: auto;
 }
 .event_des {
   font-family: sans-serif;
