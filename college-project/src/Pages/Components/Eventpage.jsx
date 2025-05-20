@@ -19,6 +19,7 @@ const Eventpage = ({ userRole }) => {
     Time: "",
     Venue: "",
   });
+  const [expandedIndex, setExpandedIndex] = useState(null); // For view details
 
   useEffect(() => {
     const fetchEvents = async () => {
@@ -107,6 +108,11 @@ const Eventpage = ({ userRole }) => {
     }
   };
 
+  // Toggle expand/collapse for view details
+  const handleViewDetails = (index) => {
+    setExpandedIndex(expandedIndex === index ? null : index);
+  };
+
   return (
     <>
       <h1 className={styles.title}>Events</h1>
@@ -114,8 +120,14 @@ const Eventpage = ({ userRole }) => {
         {/* Render all events */}
         {events.map((event, index) => {
           const isEditing = editingIndex === index;
+          const isExpanded = expandedIndex === index;
           return (
-            <div key={index} className={styles.eventCard}>
+            <div
+              key={index}
+              className={`${styles.eventCard} ${
+                isExpanded ? styles.expanded : ""
+              }`}
+            >
               <img src={event.Image} alt={event.Title} />
               {isEditing ? (
                 <>
@@ -198,7 +210,19 @@ const Eventpage = ({ userRole }) => {
                 </div>
               ) : (
                 <>
-                  <button className={styles.eventBtn}>View Details</button>
+                  <button
+                    className="eventv_btn"
+                    style={{ marginLeft: "auto", marginRight: "auto" }}
+                  >
+                    Register
+                  </button>
+                  <button
+                    className={styles.eventBtn}
+                    onClick={() => handleViewDetails(index)}
+                    type="button"
+                  >
+                    {isExpanded ? "Hide Details" : "View Details"}
+                  </button>
                   {userRole === "admin" && (
                     <button
                       className={styles.delete_btn}
@@ -207,6 +231,64 @@ const Eventpage = ({ userRole }) => {
                     >
                       Delete
                     </button>
+                  )}
+                  {isExpanded && (
+                    <div className="event_details">
+                      {/* Add more details here if you have them */}
+                      <p
+                        style={{
+                          fontFamily: "sans-serif",
+                          fontSize: "14px",
+                          textAlign: "center",
+                          marginTop: "5%",
+                          color: "grey",
+                          lineHeight: "22px",
+                        }}
+                      >
+                        {event.Description}
+                      </p>
+                      <p
+                        style={{
+                          fontFamily: "sans-serif",
+                          fontSize: "14px",
+                          textAlign: "center",
+                          color: "grey",
+                        }}
+                      >
+                        <strong>Date:</strong> {event.Date}
+                      </p>
+                      <p
+                        style={{
+                          fontFamily: "sans-serif",
+                          fontSize: "14px",
+                          textAlign: "center",
+                          color: "grey",
+                        }}
+                      >
+                        <strong>Time:</strong> {event.Time}
+                      </p>
+                      <p
+                        style={{
+                          fontFamily: "sans-serif",
+                          fontSize: "14px",
+                          textAlign: "center",
+                          color: "grey",
+                        }}
+                      >
+                        <strong>Venue:</strong> {event.Venue}
+                      </p>
+                      <p
+                        style={{
+                          fontFamily: "sans-serif",
+                          fontSize: "14px",
+                          textAlign: "center",
+                          color: "grey",
+                        }}
+                      >
+                        <strong>Fee:</strong> 200/-
+                      </p>
+                      {/* You can add more fields as needed */}
+                    </div>
                   )}
                 </>
               )}

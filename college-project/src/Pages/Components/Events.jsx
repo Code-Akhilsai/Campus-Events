@@ -11,9 +11,9 @@ const Events = ({ userRole }) => {
   const [eventData, setEventData] = useState([]);
   const [editingIndex, setEditingIndex] = useState(null);
   const [tempData, setTempData] = useState({});
+  const [expandedIndex, setExpandedIndex] = useState(null); // <-- new state
   const nav = useNavigate();
 
-  // Fetch events from Firestore on mount
   useEffect(() => {
     const fetchEvents = async () => {
       const docRef = doc(db, "Events", EVENTS_DOC_ID);
@@ -21,7 +21,7 @@ const Events = ({ userRole }) => {
       if (docSnap.exists()) {
         const firestoreEvents = docSnap.data().events;
         if (firestoreEvents && firestoreEvents.length > 0) {
-          setEventData(firestoreEvents.slice(0, 3)); // Only show first 3 events
+          setEventData(firestoreEvents.slice(0, 3));
         } else {
           setEventData([]);
         }
@@ -47,7 +47,6 @@ const Events = ({ userRole }) => {
       updatedEvents[editingIndex] = { ...tempData };
       setEventData(updatedEvents);
 
-      // Update Firestore (update the full events array, not just the first 3)
       const docRef = doc(db, "Events", EVENTS_DOC_ID);
       const docSnap = await getDoc(docRef);
       if (docSnap.exists()) {
@@ -68,6 +67,11 @@ const Events = ({ userRole }) => {
     setTempData({});
   };
 
+  // Toggle expand/collapse
+  const handleViewDetails = (index) => {
+    setExpandedIndex(expandedIndex === index ? null : index);
+  };
+
   return (
     <>
       <p className="eventcont_title" id="event_container">
@@ -77,8 +81,12 @@ const Events = ({ userRole }) => {
         <br />
         {eventData.map((data, index) => {
           const isEditing = editingIndex === index;
+          const isExpanded = expandedIndex === index;
           return (
-            <div key={index} className="event_cont">
+            <div
+              key={index}
+              className={`event_cont${isExpanded ? " expanded" : ""}`}
+            >
               <img src={data.Image} alt={data.Title} />
               {isEditing ? (
                 <>
@@ -156,7 +164,72 @@ const Events = ({ userRole }) => {
                       <IoLocationOutline size={23} />
                       <p>{data.Venue}</p>
                     </div>
-                    <button className="eventv_btn">View Details</button>
+                    <button className="eventv_btn">Register</button>
+                    <button
+                      className="viewdetails"
+                      onClick={() => handleViewDetails(index)}
+                      type="button"
+                    >
+                      {isExpanded ? "Hide details" : "View details"}
+                    </button>
+                    {isExpanded && (
+                      <div className="event_details">
+                        {/* Add more details here if you have them */}
+                        <p
+                          style={{
+                            fontFamily: "sans-serif",
+                            fontSize: "14px",
+                            textAlign: "center",
+                            marginTop: "12%",
+                            color: "grey",
+                            lineHeight: "22px",
+                          }}
+                        >
+                          {data.Description}
+                        </p>
+                        <p
+                          style={{
+                            fontFamily: "sans-serif",
+                            fontSize: "14px",
+                            textAlign: "center",
+                            color: "grey",
+                          }}
+                        >
+                          <strong>Date:</strong> {data.Date}
+                        </p>
+                        <p
+                          style={{
+                            fontFamily: "sans-serif",
+                            fontSize: "14px",
+                            textAlign: "center",
+                            color: "grey",
+                          }}
+                        >
+                          <strong>Time:</strong> {data.Time}
+                        </p>
+                        <p
+                          style={{
+                            fontFamily: "sans-serif",
+                            fontSize: "14px",
+                            textAlign: "center",
+                            color: "grey",
+                          }}
+                        >
+                          <strong>Venue:</strong> {data.Venue}
+                        </p>
+                        <p
+                          style={{
+                            fontFamily: "sans-serif",
+                            fontSize: "14px",
+                            textAlign: "center",
+                            color: "grey",
+                          }}
+                        >
+                          <strong>Fee:</strong> 200/-
+                        </p>
+                        {/* You can add more fields as needed */}
+                      </div>
+                    )}
                   </>
                 )}
               </div>

@@ -12,7 +12,7 @@
   display: flex;
   border-radius: 12px;
   flex-direction: column;
-  height: 88vh;
+  height: 94vh;
   width: 90vw;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   text-align: center;
@@ -33,6 +33,10 @@
     border-top-left-radius: 12px;
     border-top-right-radius: 12px;
   }
+}
+.eventCard.expanded {
+  height: 118vh; /* or any value larger than 88vh */
+  transition: height 0.3s;
 }
 
 .eventTitle {
@@ -69,6 +73,9 @@
   border-radius: 9px;
   border: 1px solid rgb(106, 106, 231);
   font-size: medium;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   font-weight: 500;
   margin-top: 20px;
   margin-right: auto;
@@ -184,7 +191,7 @@
     gap: 20px;
   }
   .eventCard {
-    height: 83vh;
+    height: 95vh;
     width: 30vw;
     margin-top: -5%;
   }
@@ -203,6 +210,17 @@
     width: 30vw;
     height: 45px;
     margin-left: 36%;
+  }
+
+  .event_details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .event_cont.expanded {
+    height: 127vh;
   }
 
   .edit_icon {
