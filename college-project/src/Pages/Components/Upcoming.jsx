@@ -1,9 +1,15 @@
 import styles from "./upcoming.module.css";
-import { MdOutlineCalendarMonth, MdEdit } from "react-icons/md";
+import {
+  MdOutlineCalendarMonth,
+  MdEdit,
+  MdPeopleOutline,
+} from "react-icons/md";
+
 import {
   IoTimeOutline,
   IoLocationOutline,
   IoTicketOutline,
+  IoShareSocialOutline,
 } from "react-icons/io5";
 
 import { useState, useEffect } from "react";
@@ -23,6 +29,7 @@ const Upcoming = ({ userRole }) => {
     Date: "",
     Time: "",
     Venue: "",
+    Attendees: "",
     Fee: "",
   });
 
@@ -88,6 +95,7 @@ const Upcoming = ({ userRole }) => {
         Date: "",
         Time: "",
         Venue: "",
+        Attendees: "",
         Fee: "",
       });
     } catch (error) {
@@ -106,140 +114,164 @@ const Upcoming = ({ userRole }) => {
           return (
             <div key={index}>
               {/* Main Card: Image, Title, Description */}
-              <div className={styles.eventCard}>
-                <img src={event.Image} alt={event.Title} />
-                {isEditing ? (
-                  <>
-                    <input
-                      type="text"
-                      value={tempData.Title}
-                      onChange={(e) => handleChange("Title", e.target.value)}
-                      className={styles.edit_input}
-                    />
-                    <textarea
-                      value={tempData.Description}
-                      onChange={(e) =>
-                        handleChange("Description", e.target.value)
-                      }
-                      className={styles.edit_textarea}
-                    />
-                  </>
-                ) : (
-                  <>
-                    <div className={styles.edit_row}>
-                      <h2 className={styles.eventTitle}>{event.Title}</h2>
-                      {userRole === "admin" && (
-                        <MdEdit
-                          size={18}
-                          className={styles.edit_icon}
-                          onClick={() => handleEditClick(index)}
-                        />
-                      )}
-                    </div>
-                    <p className={styles.eventDescription}>
-                      {event.Description}
-                    </p>
-                  </>
-                )}
-              </div>
-              {/* Details Card: Date, Time, Venue, Fee, Register/Delete */}
-              <div className={styles.detailsCard}>
-                <div className={styles.icon_text}>
-                  <MdOutlineCalendarMonth size={22} />
+              <div className={styles.maincard}>
+                <div className={styles.eventCard}>
+                  <img src={event.Image} alt={event.Title} />
                   {isEditing ? (
-                    <input
-                      type="text"
-                      value={tempData.Date}
-                      onChange={(e) => handleChange("Date", e.target.value)}
-                      className={styles.edit_input}
-                    />
+                    <>
+                      <input
+                        type="text"
+                        value={tempData.Title}
+                        onChange={(e) => handleChange("Title", e.target.value)}
+                        className={styles.edit_input}
+                      />
+                      <textarea
+                        value={tempData.Description}
+                        onChange={(e) =>
+                          handleChange("Description", e.target.value)
+                        }
+                        className={styles.edit_textarea}
+                      />
+                    </>
                   ) : (
-                    <span>{event.Date}</span>
+                    <>
+                      <div className={styles.edit_row}>
+                        <h2 className={styles.eventTitle}>{event.Title}</h2>
+                        {userRole === "admin" && (
+                          <MdEdit
+                            size={18}
+                            className={styles.edit_icon}
+                            onClick={() => handleEditClick(index)}
+                          />
+                        )}
+                      </div>
+                      <p className={styles.eventDescription}>
+                        {event.Description}
+                      </p>
+                    </>
                   )}
                 </div>
-                <div className={styles.icon_text}>
-                  <IoTimeOutline size={23} />
-                  {isEditing ? (
-                    <input
-                      type="text"
-                      value={tempData.Time}
-                      onChange={(e) => handleChange("Time", e.target.value)}
-                      className={styles.edit_input}
-                    />
-                  ) : (
-                    <span>{event.Time}</span>
-                  )}
-                </div>
-                <div className={styles.icon_text}>
-                  <IoLocationOutline size={23} />
-                  {isEditing ? (
-                    <input
-                      type="text"
-                      value={tempData.Venue}
-                      onChange={(e) => handleChange("Venue", e.target.value)}
-                      className={styles.edit_input}
-                    />
-                  ) : (
-                    <span>{event.Venue}</span>
-                  )}
-                </div>
-                <div className={styles.icon_text}>
-                  <IoTicketOutline size={22} />
-                  {isEditing ? (
-                    <input
-                      type="text"
-                      value={tempData.Fee}
-                      onChange={(e) => handleChange("Fee", e.target.value)}
-                      className={styles.edit_input}
-                      list="fee_input"
-                    />
-                  ) : (
-                    <span>{event.Fee}</span>
-                  )}
-                </div>
-                {/* Buttons */}
-                {isEditing ? (
-                  <div className={styles.button_group}>
-                    <button className={styles.save_btn} onClick={handleSave}>
-                      Save
-                    </button>
-                    <button
-                      className={styles.cancel_btn}
-                      onClick={handleCancel}
-                    >
-                      Cancel
-                    </button>
-                  </div>
-                ) : (
-                  <>
-                    <button className={styles.eventBtn}>Register</button>
-                    {userRole === "admin" && (
-                      <button
-                        className={styles.delete_btn}
-                        onClick={() => {
-                          if (
-                            window.confirm(
-                              "Are you sure you want to delete this event?"
-                            )
-                          ) {
-                            const updatedEvents = events.filter(
-                              (_, i) => i !== index
-                            );
-                            setEvents(updatedEvents);
-                            const docRef = doc(
-                              db,
-                              "Upcoming_events",
-                              EVENTS_DOC_ID
-                            );
-                            updateDoc(docRef, { events: updatedEvents });
-                          }
-                        }}
-                      >
-                        Delete
-                      </button>
+                {/* Details Card: Date, Time, Venue, Fee, Register/Delete */}
+                <div className={styles.detailsCard}>
+                  <div className={styles.icon_text}>
+                    <MdOutlineCalendarMonth size={22} />
+                    {isEditing ? (
+                      <input
+                        type="text"
+                        value={tempData.Date}
+                        onChange={(e) => handleChange("Date", e.target.value)}
+                        className={styles.edit_input}
+                      />
+                    ) : (
+                      <span>{event.Date}</span>
                     )}
-                  </>
-                )}
+                  </div>
+                  <div className={styles.icon_text}>
+                    <IoTimeOutline size={23} />
+                    {isEditing ? (
+                      <input
+                        type="text"
+                        value={tempData.Time}
+                        onChange={(e) => handleChange("Time", e.target.value)}
+                        className={styles.edit_input}
+                      />
+                    ) : (
+                      <span>{event.Time}</span>
+                    )}
+                  </div>
+                  <div className={styles.icon_text}>
+                    <IoLocationOutline size={23} />
+                    {isEditing ? (
+                      <input
+                        type="text"
+                        value={tempData.Venue}
+                        onChange={(e) => handleChange("Venue", e.target.value)}
+                        className={styles.edit_input}
+                      />
+                    ) : (
+                      <span>{event.Venue}</span>
+                    )}
+                  </div>
+
+                  <div className={styles.icon_text}>
+                    <MdPeopleOutline size={23} />
+                    {isEditing ? (
+                      <input
+                        type="text"
+                        value={tempData.Attendees}
+                        onChange={(e) =>
+                          handleChange("Attendees", e.target.value)
+                        }
+                        className={styles.edit_input}
+                      />
+                    ) : (
+                      <span>{event.Attendees}</span>
+                    )}
+                  </div>
+                  <div className={styles.icon_text}>
+                    <IoTicketOutline size={22} />
+                    {isEditing ? (
+                      <input
+                        type="text"
+                        value={tempData.Fee}
+                        onChange={(e) => handleChange("Fee", e.target.value)}
+                        className={styles.edit_input}
+                        list="fee_input"
+                      />
+                    ) : (
+                      <span>{event.Fee}</span>
+                    )}
+                  </div>
+                  {/* Buttons */}
+                  {isEditing ? (
+                    <div className={styles.button_group}>
+                      <button className={styles.save_btn} onClick={handleSave}>
+                        Save
+                      </button>
+                      <button
+                        className={styles.cancel_btn}
+                        onClick={handleCancel}
+                      >
+                        Cancel
+                      </button>
+                    </div>
+                  ) : (
+                    <>
+                      <button className={styles.eventBtn}>Register</button>
+                      {userRole === "admin" ? (
+                        <button
+                          className={styles.delete_btn}
+                          onClick={() => {
+                            if (
+                              window.confirm(
+                                "Are you sure you want to delete this event?"
+                              )
+                            ) {
+                              const updatedEvents = events.filter(
+                                (_, i) => i !== index
+                              );
+                              setEvents(updatedEvents);
+                              const docRef = doc(
+                                db,
+                                "Upcoming_events",
+                                EVENTS_DOC_ID
+                              );
+                              updateDoc(docRef, { events: updatedEvents });
+                            }
+                          }}
+                        >
+                          Delete
+                        </button>
+                      ) : (
+                        <button className={styles.sharebtn}>
+                          {" "}
+                          <IoShareSocialOutline color="#2d10ef" size={19} />
+                          Share
+                        </button>
+                      )}
+                    </>
+                  )}
+                </div>
               </div>
             </div>
           );
@@ -308,6 +340,16 @@ const Upcoming = ({ userRole }) => {
               required
             />
 
+            <input
+              type="text"
+              placeholder="attendees"
+              value={newEvent.Attendees}
+              onChange={(e) =>
+                setNewEvent((ev) => ({ ...ev, Attendees: e.target.value }))
+              }
+              className={styles.edit_input}
+              required
+            />
             <input
               type="text"
               placeholder="Fee"
