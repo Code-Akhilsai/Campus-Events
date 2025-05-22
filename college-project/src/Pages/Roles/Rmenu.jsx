@@ -78,9 +78,7 @@ const Rmenu = ({ handleLogoutt, userRole }) => {
 
 const Pro_dialog = ({ handleLogoutt, userRole }) => {
   const navigate = useNavigate();
-  const uploadpage = () => {
-    navigate("/upload");
-  };
+
   return (
     <div
       style={{
