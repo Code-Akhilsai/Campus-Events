@@ -64,7 +64,11 @@ function App() {
   };
 
   if (loading) {
-    return <h1>Loading...</h1>;
+    return (
+      <center>
+        <h1>Loading...</h1>
+      </center>
+    );
   }
 
   const hideMenuBar =
