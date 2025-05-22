@@ -1,24 +1,39 @@
-import { useState } from "react";
-import Image1 from "../../assets/annual.jpg";
-import { MdOutlineCalendarMonth } from "react-icons/md";
+import { useState, useEffect } from "react";
+import {
+  MdOutlineCalendarMonth,
+  MdEdit,
+  MdPeopleOutline,
+} from "react-icons/md";
 import { IoTimeOutline, IoLocationOutline } from "react-icons/io5";
-import { MdPeopleOutline, MdEdit } from "react-icons/md";
-import { doc, updateDoc } from "firebase/firestore";
+import { doc, getDoc, updateDoc } from "firebase/firestore";
 import { db } from "../../firebaseConfig";
+import { useNavigate } from "react-router-dom";
+
+const EVENTS_DOC_ID = "Upcoming_eventdata";
 
 const Featured = ({ userRole }) => {
-  const [eventData, setEventData] = useState({
-    title: "Annual Spring Concert",
-    description:
-      "Join us for the biggest musical event of the year featuring our  university symphony orchestra and choir. This year's theme  celebrates classical compositions from around the world with special  guest performances from renowned musicians.",
-    date: "Sunday, April 12, 2025",
-    time: "7:00pm",
-    location: "Auditorium",
-    attendees: "342 people attending",
-  });
-
+  const [eventData, setEventData] = useState(null);
   const [editField, setEditField] = useState(null);
   const [tempValue, setTempValue] = useState("");
+  const nav = useNavigate();
+
+  const upcoming_page = () => {
+    nav("/upcoming");
+  };
+
+  useEffect(() => {
+    const fetchEvent = async () => {
+      const docRef = doc(db, "Upcoming_events", EVENTS_DOC_ID);
+      const docSnap = await getDoc(docRef);
+      if (docSnap.exists()) {
+        const events = docSnap.data().events;
+        if (events && events.length > 0) {
+          setEventData(events[0]); // Use the first upcoming event
+        }
+      }
+    };
+    fetchEvent();
+  }, []);
 
   const handleEditClick = (field) => {
     setEditField(field);
@@ -36,27 +51,45 @@ const Featured = ({ userRole }) => {
         alert("No field selected for editing!");
         return;
       }
-      const eventId = "main";
-      const docRef = doc(db, "featuredEvents", eventId);
-      await updateDoc(docRef, { [editField]: tempValue });
-      setEventData((prev) => ({ ...prev, [editField]: tempValue }));
+      // Update the field in Firestore for the first event only
+      const docRef = doc(db, "Upcoming_events", EVENTS_DOC_ID);
+      const docSnap = await getDoc(docRef);
+      if (docSnap.exists()) {
+        const events = docSnap.data().events;
+        if (events && events.length > 0) {
+          events[0][editField] = tempValue;
+          await updateDoc(docRef, { events });
+          setEventData({ ...eventData, [editField]: tempValue });
+        }
+      }
       setEditField(null);
     } catch (error) {
       alert("Error updating event: " + error.message);
       console.error("Error updating event:", error);
     }
   };
+
+  if (!eventData) {
+    return (
+      <section className="featured_container">
+        <p className="featured_title">Featured Event</p>
+        <p className="subtitle">Don't miss out on this special event</p>
+        <div className="featured_cont2">Loading...</div>
+      </section>
+    );
+  }
+
   return (
     <section className="featured_container">
       <p className="featured_title">Featured Event</p>
       <p className="subtitle">Don't miss out on this special event</p>
 
       <div className="featured_cont2">
-        <img src={Image1} />
+        <img src={eventData.Image} alt={eventData.Title} />
         <div className="featured_cont3">
           {/* Title */}
           <div className="field_row">
-            {editField === "title" ? (
+            {editField === "Title" ? (
               <>
                 <input
                   className="edit_input"
@@ -72,12 +105,12 @@ const Featured = ({ userRole }) => {
               </>
             ) : (
               <>
-                <p className="fevent_title">{eventData.title}</p>
+                <p className="fevent_title">{eventData.Title}</p>
                 {userRole === "admin" && (
                   <MdEdit
                     size={20}
                     className="edit_icon"
-                    onClick={() => handleEditClick("title")}
+                    onClick={() => handleEditClick("Title")}
                   />
                 )}
               </>
@@ -86,7 +119,7 @@ const Featured = ({ userRole }) => {
 
           {/* Description */}
           <div className="field_row">
-            {editField === "description" ? (
+            {editField === "Description" ? (
               <>
                 <textarea
                   className="edit_textarea"
@@ -102,12 +135,12 @@ const Featured = ({ userRole }) => {
               </>
             ) : (
               <div className="description_row">
-                <p className="fevent_des">{eventData.description}</p>
+                <p className="fevent_des">{eventData.Description}</p>
                 {userRole === "admin" && (
                   <MdEdit
                     size={20}
                     className="edit_icon"
-                    onClick={() => handleEditClick("description")}
+                    onClick={() => handleEditClick("Description")}
                   />
                 )}
               </div>
@@ -119,7 +152,7 @@ const Featured = ({ userRole }) => {
             {/* Date */}
             <div className="icon_text">
               <MdOutlineCalendarMonth size={22} />
-              {editField === "date" ? (
+              {editField === "Date" ? (
                 <>
                   <input
                     className="edit_input"
@@ -135,12 +168,12 @@ const Featured = ({ userRole }) => {
                 </>
               ) : (
                 <>
-                  <p>{eventData.date}</p>
+                  <p>{eventData.Date}</p>
                   {userRole === "admin" && (
                     <MdEdit
                       size={18}
                       className="edit_icon"
-                      onClick={() => handleEditClick("date")}
+                      onClick={() => handleEditClick("Date")}
                     />
                   )}
                 </>
@@ -150,7 +183,7 @@ const Featured = ({ userRole }) => {
             {/* Time */}
             <div className="icon_text">
               <IoTimeOutline size={23} />
-              {editField === "time" ? (
+              {editField === "Time" ? (
                 <>
                   <input
                     className="edit_input"
@@ -166,12 +199,12 @@ const Featured = ({ userRole }) => {
                 </>
               ) : (
                 <>
-                  <p>{eventData.time}</p>
+                  <p>{eventData.Time}</p>
                   {userRole === "admin" && (
                     <MdEdit
                       size={18}
                       className="edit_icon"
-                      onClick={() => handleEditClick("time")}
+                      onClick={() => handleEditClick("Time")}
                     />
                   )}
                 </>
@@ -181,7 +214,7 @@ const Featured = ({ userRole }) => {
             {/* Location */}
             <div className="icon_text">
               <IoLocationOutline size={23} />
-              {editField === "location" ? (
+              {editField === "Venue" ? (
                 <>
                   <input
                     className="edit_input"
@@ -197,12 +230,12 @@ const Featured = ({ userRole }) => {
                 </>
               ) : (
                 <>
-                  <p>{eventData.location}</p>
+                  <p>{eventData.Venue}</p>
                   {userRole === "admin" && (
                     <MdEdit
                       size={18}
                       className="edit_icon"
-                      onClick={() => handleEditClick("location")}
+                      onClick={() => handleEditClick("Venue")}
                     />
                   )}
                 </>
@@ -210,9 +243,10 @@ const Featured = ({ userRole }) => {
             </div>
 
             {/* Attendees */}
+
             <div className="icon_text">
               <MdPeopleOutline size={23} />
-              {editField === "attendees" ? (
+              {editField === "Attendees" ? (
                 <>
                   <input
                     className="edit_input"
@@ -228,12 +262,12 @@ const Featured = ({ userRole }) => {
                 </>
               ) : (
                 <>
-                  <p>{eventData.attendees}</p>
+                  <p>{eventData.Attendees}</p>
                   {userRole === "admin" && (
                     <MdEdit
                       size={18}
                       className="edit_icon"
-                      onClick={() => handleEditClick("attendees")}
+                      onClick={() => handleEditClick("Attendees")}
                     />
                   )}
                 </>
@@ -242,7 +276,9 @@ const Featured = ({ userRole }) => {
 
             {/* Buttons */}
             <button className="fregister_btn">Register Now</button>
-            <button className="viewbtn">View Details</button>
+            <button className="viewbtn" onClick={upcoming_page}>
+              View Details
+            </button>
           </div>
         </div>
       </div>
