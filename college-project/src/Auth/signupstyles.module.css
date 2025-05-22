@@ -108,6 +108,11 @@
   -webkit-text-fill-color: transparent;
   font-weight: 500;
   margin-top: 1px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
 }
 
 .text {

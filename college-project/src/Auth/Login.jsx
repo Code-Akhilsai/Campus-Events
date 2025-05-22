@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { FaGoogle } from "react-icons/fa";
 import styles from "./signupstyles.module.css";
 import {
   signInWithEmailAndPassword,
@@ -123,6 +124,7 @@ const Login = () => {
           onClick={handleGoogleLogin}
           disabled={loading} // Disable button while loading
         >
+          <FaGoogle color="#2d10ef" size={19} />
           Login with Google
         </button>
 
