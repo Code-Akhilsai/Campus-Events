@@ -11,6 +11,7 @@ import Rmenu from "./Pages/Roles/Rmenu";
 import { auth } from "./firebaseConfig"; // Firebase auth instance
 import { doc, getDoc } from "firebase/firestore"; // Firestore functions
 import { db } from "./firebaseConfig"; // Firestore instance
+import Upcoming from "./Pages/Components/Upcoming";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -84,6 +85,7 @@ function App() {
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/upload" element={<Upload />} />
         <Route path="/eventpage" element={<Eventpage userRole={userRole} />} />
+        <Route path="/upcoming" element={<Upcoming userRole={userRole} />} />
         <Route path="*" element={<h1>404 Not Found</h1>} />
       </Routes>
       {console.log("user:", user, "hideMenuBar:", hideMenuBar)}
