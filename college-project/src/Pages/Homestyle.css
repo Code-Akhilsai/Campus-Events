@@ -441,6 +441,21 @@ body {
   color: black;
 }
 
+.logout_btn {
+  width: 65%;
+  height: 38px;
+  background: linear-gradient(to right, blue, rgb(177, 130, 238));
+  color: white;
+  border-radius: 9px;
+  border: 1px solid rgb(106, 106, 231);
+  font-size: medium;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 500;
+  margin-top: 60px;
+  margin-right: 5%;
+}
 .editInput {
   font-size: 0.95em;
   padding: 2px 6px;

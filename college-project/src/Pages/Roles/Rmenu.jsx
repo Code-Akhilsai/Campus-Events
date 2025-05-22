@@ -70,6 +70,9 @@ const Rmenu = ({ handleLogoutt, userRole }) => {
               Gallery
             </a>
           </nav>
+          <button onClick={handleLogoutt} href="/" className="logout_btn">
+            Logout
+          </button>
         </div>
       )}
     </>
