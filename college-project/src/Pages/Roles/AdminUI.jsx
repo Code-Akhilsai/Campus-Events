@@ -1,6 +1,6 @@
 import Rintro from "./Rintro";
 import Events from "../Components/Events";
-import Footer from "../Components/Footer";
+
 import Featured from "../Components/Featured";
 
 const AdminUI = ({ userRole }) => {
@@ -12,11 +12,6 @@ const AdminUI = ({ userRole }) => {
       <Featured userRole={userRole} />
       <br />
       <Events userRole={userRole} />
-      <br />
-      <br />
-      <br />
-      <br />
-      <Footer />
     </>
   );
 };
