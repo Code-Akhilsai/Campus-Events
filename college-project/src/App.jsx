@@ -12,6 +12,7 @@ import { auth } from "./firebaseConfig"; // Firebase auth instance
 import { doc, getDoc } from "firebase/firestore"; // Firestore functions
 import { db } from "./firebaseConfig"; // Firestore instance
 import Upcoming from "./Pages/Components/Upcoming";
+import Footer from "./Pages/Components/Footer";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -89,6 +90,11 @@ function App() {
         <Route path="*" element={<h1>404 Not Found</h1>} />
       </Routes>
       {console.log("user:", user, "hideMenuBar:", hideMenuBar)}
+      <br />
+      <br />
+      <br />
+      <br />
+      <Footer />
     </>
   );
 }

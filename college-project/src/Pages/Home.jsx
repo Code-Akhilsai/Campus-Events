@@ -25,11 +25,6 @@ function Home() {
       <Featured />
       <br />
       <Events />
-      <br />
-      <br />
-      <br />
-      <br />
-      <Footer />
     </>
   );
 }
