@@ -12,6 +12,7 @@ import { doc, getDoc } from "firebase/firestore"; // Firestore functions
 import { db } from "./firebaseConfig"; // Firestore instance
 import Upcoming from "./Pages/Components/Upcoming";
 import Footer from "./Pages/Components/Footer";
+import Gallery from "./Pages/Components/Gallery";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -85,6 +86,7 @@ function App() {
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/eventpage" element={<Eventpage userRole={userRole} />} />
         <Route path="/upcoming" element={<Upcoming userRole={userRole} />} />
+        <Route path="/gallery" element={<Gallery />} />
         <Route path="*" element={<h1>404 Not Found</h1>} />
       </Routes>
       {console.log("user:", user, "hideMenuBar:", hideMenuBar)}

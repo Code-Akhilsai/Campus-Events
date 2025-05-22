@@ -70,7 +70,9 @@ const Dashboard = () => {
   if (loading) {
     return (
       <div style={{ textAlign: "center", marginTop: "50px" }}>
-        <p>Loading...</p>
+        <center>
+          <p>Loading...</p>
+        </center>
       </div>
     );
   }
@@ -78,7 +80,7 @@ const Dashboard = () => {
   if (!role) {
     return (
       <div style={{ textAlign: "center", marginTop: "50px" }}>
-        <p>No role found. Please contact support.</p>
+        <p>Please check your internet connection and try again.</p>
         <button onClick={handleLogout}>Logout</button>
       </div>
     );
