@@ -4,7 +4,6 @@ import Home from "./Pages/Home";
 import Signup from "./Auth/Signup";
 import Login from "./Auth/Login";
 import Dashboard from "./Dashboard";
-import Upload from "./Pages/Roles/Upload";
 import Eventpage from "./Pages/Components/Eventpage";
 import Menu from "./Pages/Components/Menu";
 import Rmenu from "./Pages/Roles/Rmenu";
@@ -84,7 +83,6 @@ function App() {
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
         <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/upload" element={<Upload />} />
         <Route path="/eventpage" element={<Eventpage userRole={userRole} />} />
         <Route path="/upcoming" element={<Upcoming userRole={userRole} />} />
         <Route path="*" element={<h1>404 Not Found</h1>} />

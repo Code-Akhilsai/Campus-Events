@@ -69,16 +69,6 @@ const Rmenu = ({ handleLogoutt, userRole }) => {
             <a onClick={() => setIsDrawerOpen(false)} href="/gallery">
               Gallery
             </a>
-            {/* Conditionally Render Upload Option for Admin Users */}
-            {userRole === "admin" && (
-              <a
-                href="/upload"
-                onClick={() => setIsDrawerOpen(false)}
-                style={{ textDecoration: "none", color: "black" }}
-              >
-                Upload
-              </a>
-            )}
           </nav>
         </div>
       )}
@@ -129,20 +119,6 @@ const Pro_dialog = ({ handleLogoutt, userRole }) => {
         Notifications
       </p>
 
-      {userRole === "admin" && (
-        <p
-          style={{
-            margin: "0",
-            padding: "7px 0",
-            cursor: "pointer",
-            fontSize: "17px",
-            fontFamily: "sans-serif",
-          }}
-          onClick={uploadpage}
-        >
-          Upload
-        </p>
-      )}
       <p
         style={{
           margin: "0",
