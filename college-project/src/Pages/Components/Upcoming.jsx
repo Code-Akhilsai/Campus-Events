@@ -33,6 +33,8 @@ const Upcoming = ({ userRole }) => {
     Fee: "",
   });
 
+  const GOOGLE_FORM_URL = "https://forms.gle/uHT1QaUjCBgsX6d4A";
+
   useEffect(() => {
     const fetchEvents = async () => {
       const docRef = doc(db, "Upcoming_events", EVENTS_DOC_ID);
@@ -102,6 +104,28 @@ const Upcoming = ({ userRole }) => {
       alert("Error adding event: " + error.message);
       console.error("Error adding event:", error);
     }
+  };
+
+  const handleShare = (event) => {
+    const shareData = {
+      title: event.Title,
+      text: `${event.Title}\n${event.Description}\nDate: ${event.Date}\nTime: ${event.Time}\nVenue: ${event.Venue}`,
+      url: window.location.href,
+    };
+    if (navigator.share) {
+      navigator.share(shareData).catch((err) => {
+        alert("Sharing failed: " + err.message);
+      });
+    } else {
+      // Fallback: copy to clipboard
+      const textToCopy = `${event.Title}\n${event.Description}\nDate: ${event.Date}\nTime: ${event.Time}\nVenue: ${event.Venue}`;
+      navigator.clipboard.writeText(textToCopy);
+      alert("Event details copied to clipboard!");
+    }
+  };
+
+  const handleRegister = () => {
+    window.open(GOOGLE_FORM_URL, "_blank");
   };
 
   return (
@@ -237,7 +261,12 @@ const Upcoming = ({ userRole }) => {
                     </div>
                   ) : (
                     <>
-                      <button className={styles.eventBtn}>Register</button>
+                      <button
+                        className={styles.eventBtn}
+                        onClick={handleRegister}
+                      >
+                        Register
+                      </button>
                       {userRole === "admin" ? (
                         <button
                           className={styles.delete_btn}
@@ -263,7 +292,10 @@ const Upcoming = ({ userRole }) => {
                           Delete
                         </button>
                       ) : (
-                        <button className={styles.sharebtn}>
+                        <button
+                          className={styles.sharebtn}
+                          onClick={() => handleShare(event)}
+                        >
                           {" "}
                           <IoShareSocialOutline color="#2d10ef" size={19} />
                           Share

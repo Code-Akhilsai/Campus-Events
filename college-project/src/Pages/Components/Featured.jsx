@@ -74,7 +74,9 @@ const Featured = ({ userRole }) => {
       <section className="featured_container">
         <p className="featured_title">Featured Event</p>
         <p className="subtitle">Don't miss out on this special event</p>
-        <div className="featured_cont2">Loading...</div>
+        <div className="featured_cont2">
+          <center>Loading...</center>
+        </div>
       </section>
     );
   }
