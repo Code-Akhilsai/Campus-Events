@@ -81,6 +81,12 @@ const Featured = ({ userRole }) => {
     );
   }
 
+  const GOOGLE_FORM_URL = "https://forms.gle/uHT1QaUjCBgsX6d4A";
+
+  const handleRegister = () => {
+    window.open(GOOGLE_FORM_URL, "_blank");
+  };
+
   return (
     <section className="featured_container">
       <p className="featured_title">Featured Event</p>
@@ -277,7 +283,9 @@ const Featured = ({ userRole }) => {
             </div>
 
             {/* Buttons */}
-            <button className="fregister_btn">Register Now</button>
+            <button className="fregister_btn" onClick={handleRegister}>
+              Register Now
+            </button>
             <button className="viewbtn" onClick={upcoming_page}>
               View Details
             </button>
