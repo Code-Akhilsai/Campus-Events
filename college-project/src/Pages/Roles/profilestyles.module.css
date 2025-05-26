@@ -1,21 +1,12 @@
-.profileContainer {
-  min-height: 80vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: white;
-}
-
 .profileCard {
   background: #fff;
   border-radius: 18px;
   box-shadow: 0 4px 24px rgba(60, 60, 120, 0.08);
   padding: 2.5rem 2rem;
-  max-width: 350px;
-  width: 100%;
+  width: 70%;
   text-align: center;
   transition: box-shadow 0.2s, transform 0.2s;
-  margin-top: 3%;
+  margin: 10% auto 0 auto;
   border: 1px solid black;
 }
 
@@ -25,53 +16,24 @@
 }
 
 .avatar {
-  width: 100px;
-  height: 100px;
+  width: 160px;
+  height: 160px;
   border-radius: 50%;
   object-fit: cover;
   margin-bottom: 1rem;
-  border: 3px solid #a78bfa;
 }
 
-.name {
-  font-size: 1.5rem;
-  font-weight: 600;
-  margin-bottom: 0.2rem;
-  color: #4f46e5;
-  font-family: sans-serif;
+.inputs {
+  height: 36px;
+  width: 100%;
+  border-radius: 10px;
+  margin-bottom: 34px;
+  border: 1px grey solid;
+  outline: none;
+  transition: border 0.2s;
 }
-
-.role {
-  font-size: 1rem;
-  color: #7c3aed;
-  margin-bottom: 1.2rem;
-  font-weight: 500;
-  font-family: sans-serif;
-}
-
-.infoSection {
-  text-align: left;
-  margin-bottom: 1.5rem;
-  font-family: sans-serif;
-}
-
-.infoSection > div {
-  margin-bottom: 1rem;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-}
-
-.label {
-  font-weight: 500;
-  color: #6366f1;
-  margin-right: 0.5rem;
-  min-width: 80px;
-  font-family: sans-serif;
-}
-
-.value {
-  color: #333;
+.inputs:focus {
+  border: 1px blue solid;
 }
 
 .editBtn {
@@ -82,27 +44,4 @@
   padding: 0.6rem 1.5rem;
   font-size: 1rem;
   cursor: pointer;
-  transition: background 0.2s;
-}
-
-.editBtn:hover {
-  background: linear-gradient(90deg, #7c3aed 0%, #c4b5fd 100%);
-}
-.infoBox {
-  background: #f3f4f6;
-  border-radius: 12px;
-  padding: 0.8rem 1.2rem;
-  margin-bottom: 1rem;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  box-shadow: 0 2px 8px rgba(60, 60, 120, 0.06);
-}
-
-.infoLabel {
-  font-size: 0.95rem;
-  font-weight: 600;
-  color: #6366f1;
-  margin-bottom: 0.2rem;
-  letter-spacing: 0.5px;
 }

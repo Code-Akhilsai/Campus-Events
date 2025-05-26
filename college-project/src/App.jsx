@@ -92,7 +92,7 @@ function App() {
         <Route path="/eventpage" element={<Eventpage userRole={userRole} />} />
         <Route path="/upcoming" element={<Upcoming userRole={userRole} />} />
         <Route path="/gallery" element={<Gallery />} />
-        <Route path="/profile" element={<Profile />} />
+        <Route path="/profile" element={<Profile userRole={userRole} />} />
         <Route path="*" element={<h1>404 Not Found</h1>} />
       </Routes>
       {console.log("user:", user, "hideMenuBar:", hideMenuBar)}
