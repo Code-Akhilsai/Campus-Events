@@ -69,7 +69,7 @@ const Dashboard = () => {
 
   if (loading) {
     return (
-      <div style={{ textAlign: "center", marginTop: "50px" }}>
+      <div style={{ textAlign: "center", marginTop: "50px", height: "100vh" }}>
         <center>
           <p>Loading...</p>
         </center>
