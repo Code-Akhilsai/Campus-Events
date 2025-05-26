@@ -73,7 +73,7 @@ const Profile = () => {
     const docRef = doc(db, docPath);
 
     try {
-      await setDoc(docRef, profileData, { merge: true }); // merge:true to update only fields
+      await setDoc(docRef, profileData, { merge: true });
       alert("Profile updated successfully!");
     } catch (error) {
       console.error("Error updating profile:", error);
