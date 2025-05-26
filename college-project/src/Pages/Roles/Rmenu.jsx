@@ -140,7 +140,7 @@ const Pro_dialog = ({ handleLogoutt, userRole }) => {
           fontSize: "17px",
           fontFamily: "sans-serif",
         }}
-        onClick={handleLogoutt} // Call handleLogoutt on click
+        onClick={handleLogoutt}
       >
         Logout
       </p>
