@@ -224,6 +224,13 @@
   gap: 7px;
 }
 
+@media (min-width: 375px) {
+  .detailsCard {
+    background: #f9f9f9;
+    height: 60vh;
+  }
+}
+
 @media (min-width: 1024px) {
   .title {
     font-size: 3vw;
