@@ -53,7 +53,12 @@ const Menu = () => {
         <div className="drawer">
           <div className="drawer_header">
             <p>Menu</p>
-            <IoClose size={24} onClick={toggleDrawer} className="menu_icon" />
+            <IoClose
+              size={24}
+              onClick={toggleDrawer}
+              className="menu_icon"
+              color="black"
+            />
           </div>
           <nav className="drawer_links">
             <a onClick={() => setIsDrawerOpen(false)} href="/">

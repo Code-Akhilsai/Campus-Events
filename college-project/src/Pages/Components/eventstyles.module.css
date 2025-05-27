@@ -178,6 +178,26 @@
   margin-right: auto;
   margin-left: auto;
 }
+
+@media (min-width: 768px) {
+  .eventCard {
+    height: 700px;
+  }
+  .eventCard.expanded {
+    height: 138vh;
+  }
+
+  .eventTitle {
+    font-size: 5vw;
+  }
+
+  .eventDescription {
+    font-family: sans-serif;
+    font-size: 3vw;
+    margin-top: -3%;
+    line-height: 27px;
+  }
+}
 @media (min-width: 1024px) {
   .title {
     font-size: 3vw;
