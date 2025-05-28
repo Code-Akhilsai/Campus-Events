@@ -1,4 +1,4 @@
-import Image1 from "../../assets/img1.jpeg";
+import Image1 from "/assets/img1.jpeg";
 import "animate.css";
 import "../Homestyle.css";
 const Rintro = () => {

@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { getFirestore, doc, getDoc, setDoc } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
 import styles from "./profilestyles.module.css";
-import image from "../../assets/image.jpg";
+import image from "/assets/image.jpg";
 import { app } from "../../firebaseConfig";
 
 const Profile = () => {

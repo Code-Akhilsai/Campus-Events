@@ -2,7 +2,7 @@ import "../Homestyle.css";
 import styles from "./rolestyles.module.css";
 import { IoMenu } from "react-icons/io5";
 import { IoClose } from "react-icons/io5";
-import image from "../../assets/image.jpg";
+import image from "/assets/image.jpg";
 import { useState } from "react";
 import { useNavigate, NavLink } from "react-router-dom";
 
