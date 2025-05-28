@@ -93,7 +93,7 @@ const Featured = ({ userRole }) => {
       <p className="subtitle">Don't miss out on this special event</p>
 
       <div className="featured_cont2">
-        <img src={eventData.Image} alt={eventData.Title} />
+        <img src={eventData.Image} alt={eventData.Title} loading="lazy" />
         <div className="featured_cont3">
           {/* Title */}
           <div className="field_row">
