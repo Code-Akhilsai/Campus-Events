@@ -4,10 +4,13 @@ import { IoTimeOutline, IoLocationOutline } from "react-icons/io5";
 import { useState, useEffect } from "react";
 import { doc, getDoc, updateDoc } from "firebase/firestore";
 import { db } from "../../firebaseConfig";
-
+import image1 from "/assets/music.jpg";
+import image2 from "/assets/carrer.jpg";
+import image3 from "/assets/img2.jpg";
 const EVENTS_DOC_ID = "Eventdata";
 
 const Eventpage = ({ userRole }) => {
+  const images = [image1, image2, image3];
   const [events, setEvents] = useState([]);
   const [editingIndex, setEditingIndex] = useState(null);
   const [tempData, setTempData] = useState({});
@@ -128,7 +131,7 @@ const Eventpage = ({ userRole }) => {
                 isExpanded ? styles.expanded : ""
               }`}
             >
-              <img src={event.Image} alt={event.Title} />
+              <img src={images[index % images.length]} alt={event.Title} />
               {isEditing ? (
                 <>
                   <input

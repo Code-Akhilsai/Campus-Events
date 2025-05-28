@@ -8,6 +8,7 @@ import { IoTimeOutline, IoLocationOutline } from "react-icons/io5";
 import { doc, getDoc, updateDoc } from "firebase/firestore";
 import { db } from "../../firebaseConfig";
 import { useNavigate } from "react-router-dom";
+import image from "/assets/music.jpg";
 
 const EVENTS_DOC_ID = "Upcoming_eventdata";
 
@@ -93,7 +94,7 @@ const Featured = ({ userRole }) => {
       <p className="subtitle">Don't miss out on this special event</p>
 
       <div className="featured_cont2">
-        <img src={eventData.Image} alt={eventData.Title} loading="lazy" />
+        <img src={image} alt={eventData.Title} loading="lazy" />
         <div className="featured_cont3">
           {/* Title */}
           <div className="field_row">

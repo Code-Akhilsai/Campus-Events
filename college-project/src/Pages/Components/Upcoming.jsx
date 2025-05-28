@@ -15,7 +15,7 @@ import {
 import { useState, useEffect } from "react";
 import { doc, getDoc, updateDoc } from "firebase/firestore";
 import { db } from "../../firebaseConfig";
-
+import image from "/assets/music.jpg";
 const EVENTS_DOC_ID = "Upcoming_eventdata";
 
 const Upcoming = ({ userRole }) => {
@@ -140,7 +140,7 @@ const Upcoming = ({ userRole }) => {
               {/* Main Card: Image, Title, Description */}
               <div className={styles.maincard}>
                 <div className={styles.eventCard}>
-                  <img src={event.Image} alt={event.Title} />
+                  <img src={image} alt={event.Title} />
                   {isEditing ? (
                     <>
                       <input
