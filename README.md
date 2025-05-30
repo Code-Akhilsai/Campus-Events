@@ -23,7 +23,7 @@ To get started with the project locally:
 
    ```bash
    git clone https://github.com/Code-Akhilsai/Campus-Events.git
-   cd Campus-Events
+   cd college-project
    ```
 
 2. Install dependencies:
