@@ -209,13 +209,7 @@
     flex-wrap: wrap;
     gap: 20px;
   }
-  .mini {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 70px;
-    height: 100vh;
-  }
+
   .eventCard {
     height: 90vh;
     width: 30vw;

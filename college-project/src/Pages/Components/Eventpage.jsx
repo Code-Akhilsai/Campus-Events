@@ -120,191 +120,185 @@ const Eventpage = ({ userRole }) => {
     <>
       <h1 className={styles.title}>Events</h1>
       <div className={styles.container}>
-        <div className={styles.mini}>
-          {/* Render all events */}
-          {events.map((event, index) => {
-            const isEditing = editingIndex === index;
-            const isExpanded = expandedIndex === index;
-            return (
-              <div
-                key={index}
-                className={`${styles.eventCard} ${
-                  isExpanded ? styles.expanded : ""
-                }`}
-              >
-                <img src={images[index % images.length]} alt={event.Title} />
-                {isEditing ? (
-                  <>
-                    <input
-                      type="text"
-                      value={tempData.Title}
-                      onChange={(e) => handleChange("Title", e.target.value)}
-                      className={styles.edit_input}
-                    />
-                    <textarea
-                      value={tempData.Description}
-                      onChange={(e) =>
-                        handleChange("Description", e.target.value)
-                      }
-                      className={styles.edit_textarea}
-                    />
-                  </>
-                ) : (
-                  <>
-                    <div className={styles.edit_row}>
-                      <h2 className={styles.eventTitle}>{event.Title}</h2>
-                      {userRole === "admin" && (
-                        <MdEdit
-                          size={18}
-                          className={styles.edit_icon}
-                          onClick={() => handleEditClick(index)}
-                        />
-                      )}
-                    </div>
-                    <p className={styles.eventDescription}>
-                      {event.Description}
-                    </p>
-                  </>
-                )}
-                <div className={styles.icon_text}>
-                  <MdOutlineCalendarMonth size={22} />
-                  {isEditing ? (
-                    <input
-                      type="text"
-                      value={tempData.Date}
-                      onChange={(e) => handleChange("Date", e.target.value)}
-                      className={styles.edit_input}
-                    />
-                  ) : (
-                    <p>{event.Date}</p>
-                  )}
-                </div>
-                <div className={styles.icon_text}>
-                  <IoTimeOutline size={23} />
-                  {isEditing ? (
-                    <input
-                      type="text"
-                      value={tempData.Time}
-                      onChange={(e) => handleChange("Time", e.target.value)}
-                      className={styles.edit_input}
-                    />
-                  ) : (
-                    <p>{event.Time}</p>
-                  )}
-                </div>
-                <div className={styles.icon_text}>
-                  <IoLocationOutline size={23} />
-                  {isEditing ? (
-                    <input
-                      type="text"
-                      value={tempData.Venue}
-                      onChange={(e) => handleChange("Venue", e.target.value)}
-                      className={styles.edit_input}
-                    />
-                  ) : (
-                    <p>{event.Venue}</p>
-                  )}
-                </div>
-                {isEditing ? (
-                  <div className={styles.button_group}>
-                    <button className={styles.save_btn} onClick={handleSave}>
-                      Save
-                    </button>
-                    <button
-                      className={styles.cancel_btn}
-                      onClick={handleCancel}
-                    >
-                      Cancel
-                    </button>
-                  </div>
-                ) : (
-                  <>
-                    <button
-                      className="eventv_btn"
-                      style={{ marginLeft: "auto", marginRight: "auto" }}
-                    >
-                      Register
-                    </button>
-                    <button
-                      className={styles.eventBtn}
-                      onClick={() => handleViewDetails(index)}
-                      type="button"
-                    >
-                      {isExpanded ? "Hide Details" : "View Details"}
-                    </button>
+        {/* Render all events */}
+        {events.map((event, index) => {
+          const isEditing = editingIndex === index;
+          const isExpanded = expandedIndex === index;
+          return (
+            <div
+              key={index}
+              className={`${styles.eventCard} ${
+                isExpanded ? styles.expanded : ""
+              }`}
+            >
+              <img src={images[index % images.length]} alt={event.Title} />
+              {isEditing ? (
+                <>
+                  <input
+                    type="text"
+                    value={tempData.Title}
+                    onChange={(e) => handleChange("Title", e.target.value)}
+                    className={styles.edit_input}
+                  />
+                  <textarea
+                    value={tempData.Description}
+                    onChange={(e) =>
+                      handleChange("Description", e.target.value)
+                    }
+                    className={styles.edit_textarea}
+                  />
+                </>
+              ) : (
+                <>
+                  <div className={styles.edit_row}>
+                    <h2 className={styles.eventTitle}>{event.Title}</h2>
                     {userRole === "admin" && (
-                      <button
-                        className={styles.delete_btn}
-                        style={{ marginTop: 8 }}
-                        onClick={() => handleDelete(index)}
-                      >
-                        Delete
-                      </button>
+                      <MdEdit
+                        size={18}
+                        className={styles.edit_icon}
+                        onClick={() => handleEditClick(index)}
+                      />
                     )}
-                    {isExpanded && (
-                      <div className="event_details">
-                        {/* Add more details here if you have them */}
-                        <p
-                          style={{
-                            fontFamily: "sans-serif",
-                            fontSize: "14px",
-                            textAlign: "center",
-                            marginTop: "5%",
-                            color: "grey",
-                            lineHeight: "22px",
-                          }}
-                        >
-                          {event.Description}
-                        </p>
-                        <p
-                          style={{
-                            fontFamily: "sans-serif",
-                            fontSize: "14px",
-                            textAlign: "center",
-                            color: "grey",
-                          }}
-                        >
-                          <strong>Date:</strong> {event.Date}
-                        </p>
-                        <p
-                          style={{
-                            fontFamily: "sans-serif",
-                            fontSize: "14px",
-                            textAlign: "center",
-                            color: "grey",
-                          }}
-                        >
-                          <strong>Time:</strong> {event.Time}
-                        </p>
-                        <p
-                          style={{
-                            fontFamily: "sans-serif",
-                            fontSize: "14px",
-                            textAlign: "center",
-                            color: "grey",
-                          }}
-                        >
-                          <strong>Venue:</strong> {event.Venue}
-                        </p>
-                        <p
-                          style={{
-                            fontFamily: "sans-serif",
-                            fontSize: "14px",
-                            textAlign: "center",
-                            color: "grey",
-                          }}
-                        >
-                          <strong>Fee:</strong> 200/-
-                        </p>
-                        {/* You can add more fields as needed */}
-                      </div>
-                    )}
-                  </>
+                  </div>
+                  <p className={styles.eventDescription}>{event.Description}</p>
+                </>
+              )}
+              <div className={styles.icon_text}>
+                <MdOutlineCalendarMonth size={22} />
+                {isEditing ? (
+                  <input
+                    type="text"
+                    value={tempData.Date}
+                    onChange={(e) => handleChange("Date", e.target.value)}
+                    className={styles.edit_input}
+                  />
+                ) : (
+                  <p>{event.Date}</p>
                 )}
               </div>
-            );
-          })}
-        </div>
+              <div className={styles.icon_text}>
+                <IoTimeOutline size={23} />
+                {isEditing ? (
+                  <input
+                    type="text"
+                    value={tempData.Time}
+                    onChange={(e) => handleChange("Time", e.target.value)}
+                    className={styles.edit_input}
+                  />
+                ) : (
+                  <p>{event.Time}</p>
+                )}
+              </div>
+              <div className={styles.icon_text}>
+                <IoLocationOutline size={23} />
+                {isEditing ? (
+                  <input
+                    type="text"
+                    value={tempData.Venue}
+                    onChange={(e) => handleChange("Venue", e.target.value)}
+                    className={styles.edit_input}
+                  />
+                ) : (
+                  <p>{event.Venue}</p>
+                )}
+              </div>
+              {isEditing ? (
+                <div className={styles.button_group}>
+                  <button className={styles.save_btn} onClick={handleSave}>
+                    Save
+                  </button>
+                  <button className={styles.cancel_btn} onClick={handleCancel}>
+                    Cancel
+                  </button>
+                </div>
+              ) : (
+                <>
+                  <button
+                    className="eventv_btn"
+                    style={{ marginLeft: "auto", marginRight: "auto" }}
+                  >
+                    Register
+                  </button>
+                  <button
+                    className={styles.eventBtn}
+                    onClick={() => handleViewDetails(index)}
+                    type="button"
+                  >
+                    {isExpanded ? "Hide Details" : "View Details"}
+                  </button>
+                  {userRole === "admin" && (
+                    <button
+                      className={styles.delete_btn}
+                      style={{ marginTop: 8 }}
+                      onClick={() => handleDelete(index)}
+                    >
+                      Delete
+                    </button>
+                  )}
+                  {isExpanded && (
+                    <div className="event_details">
+                      {/* Add more details here if you have them */}
+                      <p
+                        style={{
+                          fontFamily: "sans-serif",
+                          fontSize: "14px",
+                          textAlign: "center",
+                          marginTop: "5%",
+                          color: "grey",
+                          lineHeight: "22px",
+                        }}
+                      >
+                        {event.Description}
+                      </p>
+                      <p
+                        style={{
+                          fontFamily: "sans-serif",
+                          fontSize: "14px",
+                          textAlign: "center",
+                          color: "grey",
+                        }}
+                      >
+                        <strong>Date:</strong> {event.Date}
+                      </p>
+                      <p
+                        style={{
+                          fontFamily: "sans-serif",
+                          fontSize: "14px",
+                          textAlign: "center",
+                          color: "grey",
+                        }}
+                      >
+                        <strong>Time:</strong> {event.Time}
+                      </p>
+                      <p
+                        style={{
+                          fontFamily: "sans-serif",
+                          fontSize: "14px",
+                          textAlign: "center",
+                          color: "grey",
+                        }}
+                      >
+                        <strong>Venue:</strong> {event.Venue}
+                      </p>
+                      <p
+                        style={{
+                          fontFamily: "sans-serif",
+                          fontSize: "14px",
+                          textAlign: "center",
+                          color: "grey",
+                        }}
+                      >
+                        <strong>Fee:</strong> 200/-
+                      </p>
+                      {/* You can add more fields as needed */}
+                    </div>
+                  )}
+                </>
+              )}
+            </div>
+          );
+        })}
+
         {/* Data entry card always visible for admin, at the end */}
         {userRole === "admin" && (
           <form className={styles.eventCard} onSubmit={handleAddEvent}>
