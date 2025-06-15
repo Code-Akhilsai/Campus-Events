@@ -258,6 +258,7 @@
     flex-direction: column;
     flex-wrap: wrap;
     gap: 20px;
+    height: 100vh;
   }
   .eventCard {
     height: 79vh;
