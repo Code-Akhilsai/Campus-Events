@@ -16,8 +16,7 @@ const Footer = () => {
           <p>Contact</p>
         </div>
         <br />
-        <br />
-        <br />
+        
         <p style={{ color: "white" }}>Developed by Akhil Sai</p>
       </footer>
     </>
