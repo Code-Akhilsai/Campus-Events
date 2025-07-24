@@ -15,6 +15,10 @@ const Footer = () => {
           <p>Terms</p>
           <p>Contact</p>
         </div>
+        <br />
+        <br />
+        <br />
+        <p>Developed by Akhil Sai</p>
       </footer>
     </>
   );
