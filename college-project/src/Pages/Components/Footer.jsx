@@ -16,8 +16,10 @@ const Footer = () => {
           <p>Contact</p>
         </div>
         <br />
-        
-        <p style={{ color: "white" }}>Developed by Akhil Sai</p>
+
+        <p style={{ color: "white", fontFamily: "sans-serif" }}>
+          Developed by Akhil Sai
+        </p>
       </footer>
     </>
   );
